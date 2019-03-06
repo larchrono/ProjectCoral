@@ -10,6 +10,7 @@ public class SceneInteractive : MonoBehaviour {
 	[Space(10)]
 	public TextOverlay objectTextOverlay;
 	public ImageOverlay objectImageOverlay;
+	public ScrollImageOverlay objectScrollImageOverlay;
 	public GameObject UserBagPanelObject;
 	public GameObject BagTitleObject;
 	[Space(10)]
@@ -58,6 +59,11 @@ public class SceneInteractive : MonoBehaviour {
 	public void ShowImageOverlay(ImageOverlayClass src){
 		objectImageOverlay.SetImage (src);
 		objectImageOverlay.gameObject.SetActive (true);
+	}
+
+	public void ShowScrollImageOverlay(ImageOverlayClass src){
+		objectScrollImageOverlay.SetImage (src);
+		objectScrollImageOverlay.gameObject.SetActive (true);
 	}
 
 	public void SwitchGameObjectActive(GameObject src){
