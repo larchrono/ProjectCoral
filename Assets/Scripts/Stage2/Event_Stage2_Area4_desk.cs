@@ -23,6 +23,13 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 	[SerializeField]
 	Button Button_TextOverlay;
 
+	[SerializeField]
+	Image Image_Lobby_ExcavatorBase;
+	[SerializeField]
+	Image Image_Lobby_ExcavatorBody;
+	[SerializeField]
+	Image Image_Lobby_ExcavatorFull;
+
 	public void UseExcavatorBody(){
 		if (sceneInteractive.GetItemUseResult ()) {
 
@@ -31,6 +38,11 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 
 			Button_UseBody.gameObject.SetActive (false);
 			Button_UseHand.gameObject.SetActive (true);
+
+			Image_Lobby_ExcavatorBase.gameObject.SetActive (false);
+			Image_Lobby_ExcavatorBody.gameObject.SetActive (true);
+		} else {
+			sceneInteractive.ShowTextOverlay ("它好像還缺少一些零件組合起來");
 		}
 	}
 
@@ -43,6 +55,11 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 			Button_UseHand.gameObject.SetActive (false);
 			Button_GetExcavator.gameObject.SetActive (true);
 			Button_TextOverlay.gameObject.SetActive (false);
+
+			Image_Lobby_ExcavatorBody.gameObject.SetActive (false);
+			Image_Lobby_ExcavatorFull.gameObject.SetActive (true);
+		} else {
+			sceneInteractive.ShowTextOverlay ("它好像還缺少一些零件組合起來");
 		}
 	}
 
