@@ -59,8 +59,6 @@ public class ItemDragUse : MonoBehaviour , IDragHandler, IBeginDragHandler , IEn
 	public void OnEndDrag (PointerEventData eventData){
 		if (m_DraggingIcon != null)
 			Destroy (m_DraggingIcon);
-
-
 	}
 
 	private void SetDraggedPosition(PointerEventData data)

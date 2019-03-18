@@ -25,7 +25,6 @@ public class Event_Stage2_Area2_Bottle : MonoBehaviour {
 	[SerializeField]
 	Sprite Sprite_Outside_Finish;
 
-
 	void OnEnable()
 	{
 		if (!sceneInteractive.CheckBagHasItem ("怪手"))
@@ -39,6 +38,13 @@ public class Event_Stage2_Area2_Bottle : MonoBehaviour {
 
 		Button_Undone.gameObject.SetActive (false);
 		Buttons_CanPutItem[0].gameObject.SetActive (true);
+	}
+
+	public void PlaySoundCondition(AudioSource snd){
+		if (!sceneInteractive.GetItemUseResult ())
+			return;
+
+		snd.Play ();
 	}
 
 	public void PutItem(int step){

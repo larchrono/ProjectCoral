@@ -33,6 +33,9 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	[SerializeField]
 	Button Button_Crack;
 
+	[SerializeField]
+	AudioSource SNDChalkUse;
+
 	bool[] CirclesQ1 = new bool[5];
 	GameObject[] ImageCirclesQ1 = new GameObject[5];
 
@@ -95,6 +98,7 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 			return;
 		if (!CirclesQ1 [id]) {
 			CirclesQ1 [id] = true;
+			SNDChalkUse.Play ();
 			StartCoroutine (CreateCircle (id, 1));
 
 		} else {
@@ -113,6 +117,7 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 		
 		if (!CirclesQ2 [id]) {
 			CirclesQ2 [id] = true;
+			SNDChalkUse.Play ();
 			StartCoroutine (CreateCircle (id, 2));
 
 		} else {

@@ -11,6 +11,11 @@ public class Event_Stage2_Area3_window : MonoBehaviour {
 	public Animator[] Puzzles;
 
 	[SerializeField]
+	AudioSource SNDPuzzleChange;
+	[SerializeField]
+	AudioSource SNDPuzzleFinished;
+
+	[SerializeField]
 	int nowFocusPuzzleId = - 1;
 
 	[Space(10)]
@@ -35,6 +40,8 @@ public class Event_Stage2_Area3_window : MonoBehaviour {
 			Puzzles [nowFocusPuzzleId].SetTrigger ("Disabled");
 			Puzzles [id].SetTrigger ("Disabled");
 
+			SNDPuzzleChange.Play ();
+
 			nowFocusPuzzleId = -1;
 
 			CheckPuzzleResult ();
@@ -55,6 +62,8 @@ public class Event_Stage2_Area3_window : MonoBehaviour {
 
 			ImagePuzzleBackground.Play ("Pressed");
 			isFinish = true;
+
+			SNDPuzzleFinished.Play ();
 
 			Image_OutdiseWindow.sprite = Sprite_OutsideNewWindow;
 		}

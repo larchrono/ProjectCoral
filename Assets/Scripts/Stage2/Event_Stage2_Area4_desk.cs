@@ -30,6 +30,9 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 	[SerializeField]
 	Image Image_Lobby_ExcavatorFull;
 
+	[SerializeField]
+	AudioSource SNDExcavatorMake;
+
 	public void UseExcavatorBody(){
 		if (sceneInteractive.GetItemUseResult ()) {
 
@@ -41,6 +44,8 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 
 			Image_Lobby_ExcavatorBase.gameObject.SetActive (false);
 			Image_Lobby_ExcavatorBody.gameObject.SetActive (true);
+
+			SNDExcavatorMake.Play ();
 		} else {
 			sceneInteractive.ShowTextOverlay ("它好像還缺少一些零件組合起來");
 		}
@@ -58,6 +63,8 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 
 			Image_Lobby_ExcavatorBody.gameObject.SetActive (false);
 			Image_Lobby_ExcavatorFull.gameObject.SetActive (true);
+
+			SNDExcavatorMake.Play ();
 		} else {
 			sceneInteractive.ShowTextOverlay ("它好像還缺少一些零件組合起來");
 		}

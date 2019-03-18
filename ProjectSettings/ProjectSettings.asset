@@ -161,6 +161,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: sora.Project.ProjectCoral
     Standalone: sora.Project.ProjectCoral
+    iPhone: sora.test.Coral
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16

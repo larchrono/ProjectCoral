@@ -22,6 +22,11 @@ public class SceneInteractive : MonoBehaviour {
 
 	public bool inIdle;
 
+	[Space(10)]
+
+	[SerializeField]
+	AudioSource SNDGetItem;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -161,9 +166,15 @@ public class SceneInteractive : MonoBehaviour {
 			ShowImageOverlay (src);
 	}
 
+	public void GetItemNoSound(BagItem item){
+		Instantiate (item, UserBagPanelObject.transform, false);
+		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
+	}
+
 	public void GetItem(BagItem item){
 		Instantiate (item, UserBagPanelObject.transform, false);
 		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
+		SNDGetItem.Play ();
 	}
 
 	public void SetInIdle(){
