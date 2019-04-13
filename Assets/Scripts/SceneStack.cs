@@ -21,12 +21,21 @@ public class SceneStack : MonoBehaviour {
 
 	public AreaClass PullAreaStack(){
 		int cnt = AreaStack.Count;
-		if (cnt > 0) {
+		if (cnt > 1) {
 			AreaClass targetArea = AreaStack [cnt - 1];
 			AreaStack.RemoveAt (cnt - 1);
 			return targetArea;
 		}
 
 		return null;
+	}
+
+	public void InsteadAreaStack(AreaClass area){
+		int cnt = AreaStack.Count;
+		if (cnt > 0) {
+			AreaClass targetArea = AreaStack [cnt - 1];
+			AreaStack.RemoveAt (cnt - 1);
+		}
+		AreaStack.Add (area);
 	}
 }

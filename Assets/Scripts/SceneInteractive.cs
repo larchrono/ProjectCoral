@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SceneInteractive : MonoBehaviour {
 
+	public static SceneInteractive main;
+
 	public SceneStack sceneStack;
 	public GameObject PrefabSelectedRect;
 	[Space(10)]
@@ -29,14 +31,8 @@ public class SceneInteractive : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		main = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
 
 	public void LogMessage(){
 		Debug.Log ("Touch Area!");
@@ -49,8 +45,17 @@ public class SceneInteractive : MonoBehaviour {
 		sceneStack.PushAreaStack (targetArea);
 	}
 
+	public void GoToAreaNoStack(AreaClass targetArea){
+		AreaClass nowArea = sceneStack.GetLastAreaStack ();
+		nowArea.gameObject.SetActive (false);
+		targetArea.gameObject.SetActive (true);
+		sceneStack.InsteadAreaStack(targetArea);
+	}
+
 	public void GoBackArea(){
 		AreaClass nowArea = sceneStack.PullAreaStack ();
+		if(nowArea == null)
+			return;
 		AreaClass previousArea = sceneStack.GetLastAreaStack ();
 		nowArea.gameObject.SetActive (false);
 		previousArea.gameObject.SetActive (true);
@@ -64,6 +69,11 @@ public class SceneInteractive : MonoBehaviour {
 	public void ShowImageOverlay(ImageOverlayClass src){
 		objectImageOverlay.SetImage (src);
 		objectImageOverlay.gameObject.SetActive (true);
+	}
+
+	public void ShowItemOverlay(BagItem src){
+		GetItemOverlay.instance.SetItemInfo(src);
+		GetItemOverlay.instance.gameObject.SetActive(true);
 	}
 
 	public void ShowScrollImageOverlay(ImageOverlayClass src){
@@ -84,6 +94,8 @@ public class SceneInteractive : MonoBehaviour {
 		//	Destroy (rectNowSelected);
 		//rectNowSelected = Instantiate (PrefabSelectedRect, itemNowFocus.transform, false);
 
+
+		/* Old Method Focus item
 		ColorBlock _colors;
 
 		if (itemNowFocus != null) {
@@ -92,10 +104,20 @@ public class SceneInteractive : MonoBehaviour {
 			itemNowFocus.GetComponent<Button> ().colors = _colors;
 		}
 
-		itemNowFocus = src;
 		_colors = itemNowFocus.GetComponent<Button> ().colors;
 		_colors.normalColor = new Color32 (255, 255, 255, 255);
 		itemNowFocus.GetComponent<Button> ().colors = _colors;
+		*/
+
+		itemNowFocus = src;
+	}
+
+	public void ShowPlayerBag(){
+		UserBagPanelObject.GetComponent<PanelPlayerBag>().ShowBag();
+	}
+
+	public void HidePlayerBag(){
+		UserBagPanelObject.GetComponent<PanelPlayerBag>().HideBag();
 	}
 
 	public void DestroyBagItem(BagItem src){
@@ -105,6 +127,7 @@ public class SceneInteractive : MonoBehaviour {
 
 		if (UserBagPanelObject.transform.childCount == 1) {
 			BagTitleObject.GetComponent<BagTitle> ().CloseBag ();
+			HidePlayerBag();
 		}
 	}
 
@@ -169,11 +192,13 @@ public class SceneInteractive : MonoBehaviour {
 	public void GetItemNoSound(BagItem item){
 		Instantiate (item, UserBagPanelObject.transform, false);
 		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
+		ShowPlayerBag();
 	}
 
 	public void GetItem(BagItem item){
 		Instantiate (item, UserBagPanelObject.transform, false);
 		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
+		ShowPlayerBag();
 		SNDGetItem.Play ();
 	}
 

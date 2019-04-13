@@ -10,11 +10,12 @@ public class Event_Area6 : MonoBehaviour {
 
 	public Button GoBackObject;
 
-	public Image Clear_Light;
+	public Image Center_Light;
 
 	public void UnlockGoBack(){
 		GoBackObject.onClick.RemoveAllListeners ();
 		GoBackObject.onClick.AddListener (() => sceneInteractive.GoToArea (Area_8));
-		Clear_Light.gameObject.SetActive (true);
+		Sprite _greenLight = Center_Light.GetComponent<UsedSpritePool>().UsedSprite[1];
+		Center_Light.sprite = _greenLight;
 	}
 }

@@ -37,7 +37,7 @@ public class ItemDragUse : MonoBehaviour , IDragHandler, IBeginDragHandler , IEn
 		image.sprite = GetComponent<Image> ().sprite;
 		image.rectTransform.sizeDelta = new Vector2 (DraggingItemWidth, DraggingItemHeight);
 		image.raycastTarget = false;
-		image.color = new Color (1, 1, 1, 0.5f);
+		image.color = new Color (1, 1, 1, 0.7f);
 
 		SetDraggedPosition(eventData);
 

@@ -19,12 +19,12 @@ public class BagTitle : MonoBehaviour {
 	}
 
 	public void CloseBag(){
-		BagPanel.SetActive (false);
+		//BagPanel.SetActive (false);
 		ShowTextTitle.text = "< 持有物品";
 	}
 
 	public void OpenBag(){
-		BagPanel.SetActive (true);
+		//BagPanel.SetActive (true);
 		ShowTextTitle.text = "> 持有物品";
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,8 @@ public class GlobalVariables : MonoBehaviour {
 
 	public static GlobalVariables instance;
 
-	//Flags
-	//public bool hasAlertHappen;
-	public bool isShowTouchAreaColor;
+	public bool isDebugArea;
+	public bool isUseSound;
 
 	void Awake(){
 		if (instance == null) {
@@ -19,7 +19,13 @@ public class GlobalVariables : MonoBehaviour {
 		}
 	}
 
-	public void SetShowTouchAreaColor(bool src){
-		isShowTouchAreaColor = src;
+	public void SetDebugArea(bool src){
+		isDebugArea = src;
+		PlayerPrefs.SetInt("DebugArea", Convert.ToInt32(src));
+	}
+
+	public void SetUseSound(bool src){
+		isUseSound = src;
+		PlayerPrefs.SetInt("UseSound", Convert.ToInt32(src));
 	}
 }

@@ -32,7 +32,7 @@ public class Event_Area7 : MonoBehaviour {
 
 	[Space(10)]
 	public bool CanControl;
-	public GameObject Prefabs_PuzzleClear_Light;
+	public Image PuzzleCenter_Light;
 	public GameObject Prefabs_CorrectLight;
 	public GameObject Prefabs_ErrorLight;
 
@@ -280,7 +280,9 @@ public class Event_Area7 : MonoBehaviour {
 
 	public void CheckGoal(RectTransform dist){
 		if (dist.gameObject == GoalPosition) {
-			Prefabs_PuzzleClear_Light.SetActive (true);
+			Sprite _greenLight = PuzzleCenter_Light.GetComponent<UsedSpritePool>().UsedSprite[1];
+			PuzzleCenter_Light.sprite = _greenLight;
+			
 			UserPoint.SetActive (false);
 			CanControl = false;
 			Area_6.GetComponent<Event_Area6> ().UnlockGoBack ();

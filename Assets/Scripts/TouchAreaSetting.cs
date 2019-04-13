@@ -14,7 +14,7 @@ public class TouchAreaSetting : MonoBehaviour {
 			return;
 
 		Color32 sourceColor = Image_AreaRect.color;
-		if (GlobalVariables.instance.isShowTouchAreaColor) {
+		if (GlobalVariables.instance.isDebugArea) {
 			Image_AreaRect.color = new Color32 (sourceColor.r, sourceColor.g, sourceColor.b, 50);
 		} else {
 			Image_AreaRect.color = new Color32 (sourceColor.r, sourceColor.g, sourceColor.b, 0);

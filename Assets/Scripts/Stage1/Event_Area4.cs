@@ -5,56 +5,38 @@ using UnityEngine.UI;
 
 public class Event_Area4 : MonoBehaviour {
 
-	public SceneInteractive sceneInteractive;
+	[SerializeField]
+	GameObject ControlCenterDoor;
 
-	public bool HasGetWorkPermit { get; set; }
-	public bool HasTouchNewspaper { get; set; }
-	public bool HasAlertHappen { get; set; }
-
-	[SerializeField]
-	private Image ObjectDrawer;
-	[SerializeField]
-	private Sprite DrawerClose;
-	[SerializeField]
-	private Sprite DrawerOpenItem;
-	[SerializeField]
-	private Sprite DrawerOpen;
+	bool hasGetWorkPermit;
+	bool hasTouchNewspaper;
+	bool hasAlertHappen;
 
 	public AudioSource AlertLoop;
 	public GameObject AlertLight;
 
-	private bool _drawerItem = false;
-
 	// Update is called once per frame
 	void Update () {
-		if (HasGetWorkPermit && HasTouchNewspaper && !HasAlertHappen && sceneInteractive.inIdle) {
-			HasAlertHappen = true;
+		if (hasGetWorkPermit && hasTouchNewspaper && !hasAlertHappen && SceneInteractive.main.inIdle) {
+			hasAlertHappen = true;
 			Invoke ("AreaAlert", 1.5f);
 		}
 	}
 
 	public void AreaAlert(){
-		sceneInteractive.ShowTextOverlay ("溫度過高，請立即關閉反應爐！");
+		SceneInteractive.main.ShowTextOverlay ("溫度過高，請立即關閉反應爐！");
 		Handheld.Vibrate ();
 		AlertLight.SetActive (true);
 		AlertLoop.Play ();
+		ControlCenterDoor.SetActive(true);
 	}
 
+	// A condition for Door open
 	public void GetWorkPermit(){
-		HasGetWorkPermit = true;
+		hasGetWorkPermit = true;
 	}
-
-	public void AlertCondition(){
-		sceneInteractive.SetConditionFlagTo (HasAlertHappen);
-	}
-
-	public void DoDrawerOpen(){
-		if (!_drawerItem) {
-			ObjectDrawer.sprite = DrawerOpenItem;
-		}
-	}
-
-	public void TakeDrawerItem(){
-		ObjectDrawer.sprite = DrawerOpen;
+	// A condition for Door open
+	public void TouchNewsPaper(){
+		hasTouchNewspaper = true;
 	}
 }

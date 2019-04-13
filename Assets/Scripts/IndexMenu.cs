@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class IndexMenu : MonoBehaviour {
 
@@ -29,6 +31,20 @@ public class IndexMenu : MonoBehaviour {
 	IEnumerator IELoadSceneDelay(string stage, float delay){
 		yield return new WaitForSeconds (delay);
 		LoadScene (stage);
+	}
+
+	public void StartGame(){
+		GameObject src = GameObject.FindWithTag("ScreenBlackMask");
+		Image _blackMask = src.GetComponent<Image>();
+		_blackMask.DOFade(1,2f);
+		LoadSceneDelay("Scene1",2f);
+	}
+
+	public void BackToTitle(){
+		GameObject src = GameObject.FindWithTag("ScreenBlackMask");
+		Image _blackMask = src.GetComponent<Image>();
+		_blackMask.DOFade(1,2f);
+		LoadSceneDelay("Index",2f);
 	}
 
 	//////extend //////
