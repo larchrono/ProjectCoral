@@ -17,18 +17,14 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	Transform Background_Q2;
 	[SerializeField]
 	Transform nowBackground;
+
 	[Space(10)]
 	[SerializeField]
-	GameObject Image_OutsideQ1;
-	[SerializeField]
-	GameObject Image_OutsideQ2;
+	GameObject Image_OutsideQuestion;
+
 	[Space(10)]
 	[SerializeField]
-	Image Image_Background;
-	[SerializeField]
-	Sprite Sprite_BoardFall;
-	[SerializeField]
-	Sprite Sprite_BoardCrack;
+	Image Image_SecondBoard;
 
 	[SerializeField]
 	Button Button_Crack;
@@ -137,8 +133,8 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 			Background_Q1.gameObject.SetActive (false);
 			Background_Q2.gameObject.SetActive (true);
 
-			Image_OutsideQ1.SetActive (false);
-			Image_OutsideQ2.SetActive (true);
+			//Image_OutsideSecondBoard.SetActive (false);
+			Image_OutsideQuestion.GetComponent<UsedSpritePool>().SetSpriteToPoolID(1);
 
 			nowBackground = Background_Q2;
 		}
@@ -152,10 +148,11 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 			yield return new WaitForSeconds (1.0f);
 			isDrawing = false;
 
-			Image_Background.sprite = Sprite_BoardFall;
+			Image_SecondBoard.GetComponent<UsedSpritePool>().SetSpriteToPoolID(1);
 			Button_Crack.gameObject.SetActive (true);
 
-			sceneInteractive.DestroyNowFocusBagItem ();
+			//sceneInteractive.DestroyNowFocusBagItem ();
+			sceneInteractive.RemoveBagItem("粉筆");
 
 		}
 	}

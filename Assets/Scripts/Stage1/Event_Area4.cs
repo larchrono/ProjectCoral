@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Event_Area4 : MonoBehaviour {
+
+	[SerializeField]
+	public QueueAction OnArea4_Enter;
+
+	[Space(10)]
 
 	[SerializeField]
 	GameObject ControlCenterDoor;
@@ -14,6 +20,15 @@ public class Event_Area4 : MonoBehaviour {
 
 	public AudioSource AlertLoop;
 	public GameObject AlertLight;
+
+	[Space(10)]
+
+	[SerializeField]
+	public QueueAction OnArea7_Clear;
+
+	void Start() {
+		OnArea4_Enter.Invoke();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -39,4 +54,5 @@ public class Event_Area4 : MonoBehaviour {
 	public void TouchNewsPaper(){
 		hasTouchNewspaper = true;
 	}
+
 }

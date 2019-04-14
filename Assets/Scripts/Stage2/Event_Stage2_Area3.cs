@@ -10,7 +10,6 @@ public class Event_Stage2_Area3 : MonoBehaviour {
 
 	public Image Background_AreaMenu;
 	public Image Background_WoodFish;
-	public Sprite Sprite_FinishArea;
 	public Button Button_Area3WoodFish;
 
 	public AudioSource StampSound;
@@ -55,7 +54,7 @@ public class Event_Stage2_Area3 : MonoBehaviour {
 	public void CheckAllStemps(){
 		if (Stamps [0] && !Stamps [1] && Stamps [2] && Stamps [3] && !Stamps [4] && Stamps [5] && !Stamps [6] && !isStampFinish) {
 			isStampFinish = true;
-			Background_AreaMenu.sprite = Sprite_FinishArea;
+			Background_AreaMenu.GetComponent<UsedSpritePool>().SetSpriteToPoolID(1);
 			Button_Area3WoodFish.gameObject.SetActive (true);
 			Background_WoodFish.gameObject.SetActive (true);
 

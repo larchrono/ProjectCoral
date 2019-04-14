@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyID: 6
-  bagName: "\u602A\u624B\u96F6\u4EF61"
+  bagName: "\u602A\u624B\u96F6\u4EF6-\u8EAB\u9AD4"
 --- !u!114 &4782974820057205988
 MonoBehaviour:
   m_ObjectHideFlags: 0

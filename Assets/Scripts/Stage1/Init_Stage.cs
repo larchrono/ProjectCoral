@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Init_Stage : MonoBehaviour {
 
+	[Header("Auto Setting Sound via GlobalVariable")]
+
+	[Space(10)]
+
 	[SerializeField]
 	public QueueAction willRunAction;
 

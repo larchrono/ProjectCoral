@@ -23,7 +23,7 @@ public class Event_Area1 : MonoBehaviour
     void Start()
     {
         if(!hasRunIntrol){
-            DOTween.To(()=> _bgm.volume, x => _bgm.volume = x , 1 , 5);
+            DOTween.To(()=> _bgm.volume, x => _bgm.volume = x , 0.7f , 5);
             PreMovie.started += RemovePreBlackView;
             PreMovie.loopPointReached += PreMovieEnd;
             hasRunIntrol = true;
@@ -44,6 +44,7 @@ public class Event_Area1 : MonoBehaviour
     void PreMovieEnd(VideoPlayer vp){
         SceneInteractive.main.ShowPlayerBag();
         ButtonBackArea.SetActive(true);
+        PreMovie.gameObject.SetActive(false);
     }
 
 }

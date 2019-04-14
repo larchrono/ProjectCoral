@@ -21,8 +21,6 @@ public class Event_Stage2_Area3_window : MonoBehaviour {
 	[Space(10)]
 	[SerializeField]
 	Image Image_OutdiseWindow;
-	[SerializeField]
-	Sprite Sprite_OutsideNewWindow;
 
 	bool isFinish = false;
 
@@ -65,7 +63,8 @@ public class Event_Stage2_Area3_window : MonoBehaviour {
 
 			SNDPuzzleFinished.Play ();
 
-			Image_OutdiseWindow.sprite = Sprite_OutsideNewWindow;
+			Image_OutdiseWindow.GetComponent<UsedSpritePool>().SetSpriteToPoolID(1);
+			Image_OutdiseWindow.rectTransform.anchoredPosition = new Vector2(-122,500);
 		}
 	}
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SceneInteractive : MonoBehaviour {
 
@@ -36,6 +37,15 @@ public class SceneInteractive : MonoBehaviour {
 
 	public void LogMessage(){
 		Debug.Log ("Touch Area!");
+	}
+
+	public void GoToAreaFade(AreaClass targetArea){
+		AreaClass nowArea = sceneStack.GetLastAreaStack ();
+		nowArea.gameObject.SetActive (false);
+		targetArea.gameObject.SetActive (true);
+		sceneStack.PushAreaStack (targetArea);
+
+		targetArea.GetComponentInChildren<Image>().DOFade(0,2f).From();
 	}
 
 	public void GoToArea(AreaClass targetArea){
@@ -131,6 +141,17 @@ public class SceneInteractive : MonoBehaviour {
 		}
 	}
 
+	public int GetBagItemNumber(){
+		int count = 0;
+		foreach (Transform child in UserBagPanelObject.transform) {
+			BagItem item = child.GetComponent<BagItem> ();
+			if (item != null) {
+				count++;
+			}
+		}
+		return count;
+	}
+
 	public bool CheckBagHasItem(string itemName){
 		bool flag = false;
 		int count = 0;
@@ -190,15 +211,19 @@ public class SceneInteractive : MonoBehaviour {
 	}
 
 	public void GetItemNoSound(BagItem item){
+		if(GetBagItemNumber() == 0)
+			ShowPlayerBag();
 		Instantiate (item, UserBagPanelObject.transform, false);
 		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
-		ShowPlayerBag();
+		
 	}
 
 	public void GetItem(BagItem item){
+		if(GetBagItemNumber() == 0)
+			ShowPlayerBag();
 		Instantiate (item, UserBagPanelObject.transform, false);
 		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
-		ShowPlayerBag();
+		
 		SNDGetItem.Play ();
 	}
 

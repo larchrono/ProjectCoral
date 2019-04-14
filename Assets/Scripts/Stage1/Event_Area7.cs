@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Event_Area7 : MonoBehaviour {
 
-	public AreaClass Area_6;
+	public AreaClass Area_4;
 	public AudioSource ErrorStep;
 	public AudioSource BGM_Alert;
 	public AudioSource BGM_Room;
@@ -278,6 +278,7 @@ public class Event_Area7 : MonoBehaviour {
 		}
 	}
 
+	//Area Clear 
 	public void CheckGoal(RectTransform dist){
 		if (dist.gameObject == GoalPosition) {
 			Sprite _greenLight = PuzzleCenter_Light.GetComponent<UsedSpritePool>().UsedSprite[1];
@@ -285,7 +286,8 @@ public class Event_Area7 : MonoBehaviour {
 			
 			UserPoint.SetActive (false);
 			CanControl = false;
-			Area_6.GetComponent<Event_Area6> ().UnlockGoBack ();
+			
+			Area_4.GetComponent<Event_Area4> ().OnArea7_Clear.Invoke();
 
 			BGM_Alert.Stop ();
 			BGM_Room.Play ();

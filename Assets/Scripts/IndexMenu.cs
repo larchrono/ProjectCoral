@@ -47,9 +47,10 @@ public class IndexMenu : MonoBehaviour {
 		LoadSceneDelay("Index",2f);
 	}
 
-	//////extend //////
-
-	public void BackToMenu(){
-		LoadSceneDelay ("Index", 3f);
+	public void LoadSceneWithFade(string stage){
+		GameObject src = GameObject.FindWithTag("ScreenBlackMask");
+		Image _blackMask = src.GetComponent<Image>();
+		_blackMask.DOFade(1,2f);
+		LoadSceneDelay(stage,2f);
 	}
 }

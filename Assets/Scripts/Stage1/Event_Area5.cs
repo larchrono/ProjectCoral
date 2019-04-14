@@ -14,12 +14,19 @@ public class Event_Area5 : MonoBehaviour {
 	public AudioSource DoorOpen;
 	bool doorUnlock = false;
 
+	[Space(10)]
+
+	[SerializeField]
+	public QueueAction OnItemUseSuccess;
+
 	public void UnlockGotoArea_6(){
 		if (sceneInteractive.GetItemUseResult ()) {
 			GotoArea.onClick.RemoveAllListeners ();
 			GotoArea.onClick.AddListener (() => sceneInteractive.GoToArea (Area_6));
 			doorUnlock = true;
 			DoorOpen.Play ();
+			OnItemUseSuccess.Invoke();
+			
 		} else if (doorUnlock) {
 			DoorOpen.Play ();
 		} else {
