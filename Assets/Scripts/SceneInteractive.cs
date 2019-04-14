@@ -15,7 +15,7 @@ public class SceneInteractive : MonoBehaviour {
 	public ImageOverlay objectImageOverlay;
 	public ScrollImageOverlay objectScrollImageOverlay;
 	public GameObject UserBagPanelObject;
-	public GameObject BagTitleObject;
+	//public GameObject BagTitleObject;
 	[Space(10)]
 	public BagItem itemNowFocus;
 	public GameObject rectNowSelected;
@@ -136,7 +136,7 @@ public class SceneInteractive : MonoBehaviour {
 		Destroy (src.gameObject);
 
 		if (UserBagPanelObject.transform.childCount == 1) {
-			BagTitleObject.GetComponent<BagTitle> ().CloseBag ();
+			//BagTitleObject.GetComponent<BagTitle> ().CloseBag ();
 			HidePlayerBag();
 		}
 	}
@@ -214,7 +214,7 @@ public class SceneInteractive : MonoBehaviour {
 		if(GetBagItemNumber() == 0)
 			ShowPlayerBag();
 		Instantiate (item, UserBagPanelObject.transform, false);
-		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
+		//BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
 		
 	}
 
@@ -222,7 +222,7 @@ public class SceneInteractive : MonoBehaviour {
 		if(GetBagItemNumber() == 0)
 			ShowPlayerBag();
 		Instantiate (item, UserBagPanelObject.transform, false);
-		BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
+		//BagTitleObject.GetComponent<BagTitle> ().OpenBag ();
 		
 		SNDGetItem.Play ();
 	}

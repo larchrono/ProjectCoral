@@ -8,17 +8,12 @@ using DG.Tweening;
 
 public class Event_AreaMovie1 : MonoBehaviour
 {
-    [SerializeField]
-    SceneInteractive sceneInteractive;
 
     [SerializeField]
     VideoPlayer BackgroundVideo;
 
     [SerializeField]
     VideoPlayer introMovie;
-
-    [SerializeField]
-    AreaClass nextArea;
 
     public void AddOverlayCloseAction(){
         GetItemOverlay.instance.closeOverlay += OnCloseOverlay;
@@ -46,6 +41,7 @@ public class Event_AreaMovie1 : MonoBehaviour
     }
 
     void EndIntroMovie(VideoPlayer vp){
-        sceneInteractive.GoToAreaNoStack(nextArea);
+        //sceneInteractive.GoToAreaNoStack(nextArea);
+        IndexMenu.main.LoadScene("Scene1");
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine.Video;
 
 public class Event_AreaMovie0 : MonoBehaviour
 {
-    [SerializeField]
-    SceneInteractive sceneInteractive;
 
     [SerializeField]
     AreaClass nextArea;
@@ -22,6 +20,6 @@ public class Event_AreaMovie0 : MonoBehaviour
 
     void IntroEndReached(VideoPlayer vp)
     {
-        sceneInteractive.GoToAreaNoStack(nextArea);
+        SceneInteractive.main.GoToAreaNoStack(nextArea);
     }
 }

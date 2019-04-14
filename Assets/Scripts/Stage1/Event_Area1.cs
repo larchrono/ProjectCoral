@@ -17,6 +17,9 @@ public class Event_Area1 : MonoBehaviour
     [SerializeField]
     GameObject ButtonBackArea;
 
+    [SerializeField]
+    BagItem theKey;
+
     bool hasRunIntrol;
 
     // Start is called before the first frame update
@@ -42,7 +45,7 @@ public class Event_Area1 : MonoBehaviour
     }
 
     void PreMovieEnd(VideoPlayer vp){
-        SceneInteractive.main.ShowPlayerBag();
+        SceneInteractive.main.GetItemNoSound(theKey);
         ButtonBackArea.SetActive(true);
         PreMovie.gameObject.SetActive(false);
     }

@@ -7,6 +7,13 @@ using DG.Tweening;
 
 public class IndexMenu : MonoBehaviour {
 
+	public static IndexMenu main;
+
+	// Use this for initialization
+	void Start () {
+		main = this;
+	}
+
 	public void LoadScene(int stage){
 		SceneManager.LoadScene ("Scene" + stage);
 	}
@@ -37,7 +44,7 @@ public class IndexMenu : MonoBehaviour {
 		GameObject src = GameObject.FindWithTag("ScreenBlackMask");
 		Image _blackMask = src.GetComponent<Image>();
 		_blackMask.DOFade(1,2f);
-		LoadSceneDelay("Scene1",2f);
+		LoadSceneDelay("SceneIntro",2f);
 	}
 
 	public void BackToTitle(){
