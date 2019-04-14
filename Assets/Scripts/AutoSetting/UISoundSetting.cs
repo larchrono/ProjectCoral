@@ -40,11 +40,11 @@ public class UISoundSetting : MonoBehaviour
         if(soundSetting){
             _icon.sprite = _closeSound;
             GlobalVariables.instance.SetUseSound(!soundSetting);
-            Camera.main.GetComponent<AudioListener>().enabled = false;
+            AudioListener.volume = 0;
         } else {
             _icon.sprite = _openSound;
             GlobalVariables.instance.SetUseSound(!soundSetting);
-            Camera.main.GetComponent<AudioListener>().enabled = true;
+            AudioListener.volume = 1;
         }
 	}
 }

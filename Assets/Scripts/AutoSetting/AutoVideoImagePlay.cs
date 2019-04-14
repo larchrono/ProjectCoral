@@ -22,11 +22,18 @@ public class AutoVideoImagePlay : MonoBehaviour
         int rW = Mathf.FloorToInt(targetImage.rectTransform.rect.width);
         int rH = Mathf.FloorToInt(targetImage.rectTransform.rect.height);
 
-        if (renderTexture==null)
+        renderTexture = sourceVideo.targetTexture;
+
+        if (renderTexture==null){
             renderTexture = new RenderTexture(rW, rH, 24);
-
-        sourceVideo.targetTexture = renderTexture;
+            sourceVideo.targetTexture = renderTexture;
+        }
+            
         targetImage.texture = renderTexture;
+        
+    }
 
+    void OnDisable() {
+        renderTexture.Release();
     }
 }

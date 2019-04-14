@@ -11,7 +11,7 @@ VideoClipImporter:
   endFrame: -1
   colorSpace: 0
   deinterlace: 0
-  encodeAlpha: 0
+  encodeAlpha: 1
   flipVertical: 0
   flipHorizontal: 0
   importAudio: 0
@@ -25,6 +25,15 @@ VideoClipImporter:
       customHeight: 1125
       bitrateMode: 2
       spatialQuality: 2
+    4:
+      enableTranscoding: 1
+      codec: 0
+      resizeFormat: 2
+      aspectRatio: 5
+      customWidth: 2346
+      customHeight: 1125
+      bitrateMode: 1
+      spatialQuality: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -12,6 +12,9 @@ public class Event_AreaMovie1 : MonoBehaviour
     SceneInteractive sceneInteractive;
 
     [SerializeField]
+    VideoPlayer BackgroundVideo;
+
+    [SerializeField]
     VideoPlayer introMovie;
 
     [SerializeField]
@@ -31,11 +34,15 @@ public class Event_AreaMovie1 : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        BackgroundVideo.Pause();
+        RawImage _rawImage = BackgroundVideo.GetComponent<RawImage>();
+        _rawImage.DOFade(0,1.5f);
+
         introMovie.gameObject.SetActive(true);
         introMovie.loopPointReached += EndIntroMovie;
 
-        RawImage _rawImage = introMovie.GetComponent<RawImage>();
-        _rawImage.DOFade(1,1.5f);
+        //RawImage _rawImage = introMovie.GetComponent<RawImage>();
+        //_rawImage.DOFade(1,1.5f);
     }
 
     void EndIntroMovie(VideoPlayer vp){

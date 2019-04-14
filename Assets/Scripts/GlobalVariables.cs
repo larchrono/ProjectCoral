@@ -17,6 +17,17 @@ public class GlobalVariables : MonoBehaviour {
 		} else {
 			Destroy (gameObject);
 		}
+
+		//Assign PlayerPrefs to Global Setting
+
+		bool useDebugArea = PlayerPrefs.GetInt("DebugArea", 0) > 0 ? true : false;
+		bool useSound = PlayerPrefs.GetInt("UseSound", 1) > 0 ? true : false;
+
+		SetUseSound(useDebugArea);
+		SetUseSound(useSound);
+
+        Debug.Log("Reading PlayerPrefs DebugArea: " + useDebugArea);
+        Debug.Log("Reading PlayerPrefs UseSound: " + useSound);
 	}
 
 	public void SetDebugArea(bool src){
