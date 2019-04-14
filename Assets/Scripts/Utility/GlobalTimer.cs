@@ -77,7 +77,7 @@ public class GlobalTimer : MonoBehaviour
 		} 
 	}
 
-	#region測試代碼
+	#region 測試代碼
 	void Start() 
 	{ 
 		TimerData td1 = GlobalTimer.Instance.AddTimer(5, 
