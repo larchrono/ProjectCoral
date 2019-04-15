@@ -9,9 +9,9 @@ public class Event_Stage2_Area0 : MonoBehaviour
 {
 
     [SerializeField]
-    Image PreBlackView;
+    Image PreBlackView = null;
     [SerializeField]
-    VideoPlayer PreMovie;
+    VideoPlayer PreMovie = null;
 
     bool hasRunIntrol;
 

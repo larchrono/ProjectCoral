@@ -7,10 +7,10 @@ public class Event_AreaMovie0 : MonoBehaviour
 {
 
     [SerializeField]
-    AreaClass nextArea;
+    AreaClass nextArea = null;
 
     [SerializeField]
-    VideoPlayer introVideo;
+    VideoPlayer introVideo = null;
 
     // Start is called before the first frame update
     void Start()

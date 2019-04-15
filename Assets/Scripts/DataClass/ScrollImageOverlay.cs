@@ -8,7 +8,7 @@ public class ScrollImageOverlay : MonoBehaviour
 	public ImageOverlayClass imageShow;
 
 	[SerializeField]
-	private ScrollRect Content;
+	private ScrollRect Content = null;
 
 	public void SetImage(ImageOverlayClass src){
 		if (imageShow != null)

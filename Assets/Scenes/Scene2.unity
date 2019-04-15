@@ -5929,7 +5929,7 @@ GameObject:
   - component: {fileID: 632791820}
   - component: {fileID: 632791821}
   m_Layer: 5
-  m_Name: GetItemOverlay
+  m_Name: OverlayGetItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5951,8 +5951,8 @@ RectTransform:
   - {fileID: 890926991}
   - {fileID: 758187308}
   - {fileID: 2065549530}
-  m_Father: {fileID: 796963168}
-  m_RootOrder: 16
+  m_Father: {fileID: 1874664625}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8264,10 +8264,6 @@ RectTransform:
   - {fileID: 1530448840}
   - {fileID: 1929350330}
   - {fileID: 271167861}
-  - {fileID: 632791820}
-  - {fileID: 1318588442}
-  - {fileID: 1622161271}
-  - {fileID: 1307038702}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9638,6 +9634,7 @@ GameObject:
   - component: {fileID: 897219307}
   - component: {fileID: 897219309}
   - component: {fileID: 897219308}
+  - component: {fileID: 897219310}
   m_Layer: 5
   m_Name: Image_BlackMask
   m_TagString: ScreenBlackMask
@@ -9657,7 +9654,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1874664625}
-  m_RootOrder: 5
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9701,6 +9698,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897219306}
   m_CullTransparentMesh: 0
+--- !u!114 &897219310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897219306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36b121302a498b4f85bd4f00ba0ebb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &899020629
 GameObject:
   m_ObjectHideFlags: 0
@@ -12087,14 +12096,12 @@ VideoPlayer:
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
   m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
   m_SkipOnDrop: 0
   m_Looping: 0
@@ -12475,6 +12482,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205663533}
   m_CullTransparentMesh: 0
+--- !u!1 &1212216216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212216217}
+  m_Layer: 5
+  m_Name: '--------------------'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1212216217
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212216216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1874664625}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1216766241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12947,7 +12989,7 @@ GameObject:
   - component: {fileID: 1307038702}
   - component: {fileID: 1307038703}
   m_Layer: 5
-  m_Name: TextOverlay
+  m_Name: OverlayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12965,8 +13007,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1308739251}
-  m_Father: {fileID: 796963168}
-  m_RootOrder: 19
+  m_Father: {fileID: 1874664625}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12986,6 +13028,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textShow: {fileID: 2010098263}
+  textPanel: {fileID: 675600531}
+  ButtonBackground: {fileID: 1308739252}
+  TextFlyHeight: 100
+  TextFlySpeed: 0.5
 --- !u!1 &1308739250
 GameObject:
   m_ObjectHideFlags: 0
@@ -13068,8 +13114,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1307038701}
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1308739252}
+        m_MethodName: set_interactable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13081,6 +13127,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1671764337}
         m_MethodName: SetInIdle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1307038703}
+        m_MethodName: OnCloseOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13165,8 +13222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -153}
-  m_SizeDelta: {x: 1200, y: 500}
+  m_AnchoredPosition: {x: 0, y: -185}
+  m_SizeDelta: {x: 1350, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309253221
 MonoBehaviour:
@@ -13284,7 +13341,7 @@ GameObject:
   - component: {fileID: 1318588442}
   - component: {fileID: 1318588443}
   m_Layer: 5
-  m_Name: ImageOverlay
+  m_Name: OverlayImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13302,8 +13359,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 801629377}
-  m_Father: {fileID: 796963168}
-  m_RootOrder: 17
+  m_Father: {fileID: 1874664625}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15733,7 +15790,7 @@ GameObject:
   - component: {fileID: 1622161271}
   - component: {fileID: 1622161272}
   m_Layer: 5
-  m_Name: ScrollImageOverlay
+  m_Name: OverlayScrollImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15752,8 +15809,8 @@ RectTransform:
   m_Children:
   - {fileID: 59484539}
   - {fileID: 2071485387}
-  m_Father: {fileID: 796963168}
-  m_RootOrder: 18
+  m_Father: {fileID: 1874664625}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16195,11 +16252,11 @@ MonoBehaviour:
   objectImageOverlay: {fileID: 1318588443}
   objectScrollImageOverlay: {fileID: 1622161272}
   UserBagPanelObject: {fileID: 767804920}
-  BagTitleObject: {fileID: 845393977}
   itemNowFocus: {fileID: 0}
   rectNowSelected: {fileID: 0}
   inIdle: 0
   SNDGetItem: {fileID: 1513417976}
+  FadingSpeed: 0.2
 --- !u!4 &1671764338
 Transform:
   m_ObjectHideFlags: 0
@@ -17992,6 +18049,11 @@ RectTransform:
   - {fileID: 1379235694}
   - {fileID: 767804921}
   - {fileID: 888708062}
+  - {fileID: 632791820}
+  - {fileID: 1318588442}
+  - {fileID: 1622161271}
+  - {fileID: 1307038702}
+  - {fileID: 1212216217}
   - {fileID: 897219307}
   m_Father: {fileID: 0}
   m_RootOrder: 10

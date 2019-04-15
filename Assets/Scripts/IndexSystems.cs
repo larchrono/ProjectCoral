@@ -7,7 +7,7 @@ public class IndexSystems : MonoBehaviour
 {
 
     [SerializeField]
-    Toggle Toggle_IsShowTouch;
+    Toggle Toggle_IsShowTouch = null;
 
     void Start()
     {

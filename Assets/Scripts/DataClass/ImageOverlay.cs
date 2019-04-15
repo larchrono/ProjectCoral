@@ -7,14 +7,17 @@ using UnityEngine.UI;
 
 public class ImageOverlay : MonoBehaviour {
 
-	public static ImageOverlay instance;
+	public static ImageOverlay main;
 
 	public event EventHandler closeOverlay;
 
 	public ImageOverlayClass imageShow;
+	
 
+	//Need set Active in Scene or Set it into Init scripts
 	void Awake() {
-		instance = this;
+		main = this;
+		gameObject.SetActive(false);
 	}
 
 	public void OnCloseOverlay(){

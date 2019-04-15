@@ -13,7 +13,7 @@ public class Init_Stage : MonoBehaviour
     public QueueAction willRunAction;
 
     [SerializeField]
-    GameObject[] NeedInitOverlays;
+    GameObject[] NeedInitOverlays = null;
 
     // Use this for initialization
     void Start()

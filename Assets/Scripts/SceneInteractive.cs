@@ -28,7 +28,9 @@ public class SceneInteractive : MonoBehaviour {
 	[Space(10)]
 
 	[SerializeField]
-	AudioSource SNDGetItem;
+	AudioSource SNDGetItem = null;
+
+	public float FadingSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -48,28 +50,60 @@ public class SceneInteractive : MonoBehaviour {
 		targetArea.GetComponentInChildren<Image>().DOFade(0,2f).From();
 	}
 
+	///////////////////////////////////Go to Area Methods
+
+	bool isAreaFading = false;
 	public void GoToArea(AreaClass targetArea){
-		AreaClass nowArea = sceneStack.GetLastAreaStack ();
-		nowArea.gameObject.SetActive (false);
-		targetArea.gameObject.SetActive (true);
-		sceneStack.PushAreaStack (targetArea);
-	}
+		if(isAreaFading == true)
+			return;
 
+		isAreaFading = true;
+		StartCoroutine(FadeToAction(FadingSpeed,delegate {
+			AreaClass nowArea = sceneStack.GetLastAreaStack ();
+			nowArea.gameObject.SetActive (false);
+			targetArea.gameObject.SetActive (true);
+			sceneStack.PushAreaStack (targetArea);
+			isAreaFading = false;
+		}));
+	}
 	public void GoToAreaNoStack(AreaClass targetArea){
-		AreaClass nowArea = sceneStack.GetLastAreaStack ();
-		nowArea.gameObject.SetActive (false);
-		targetArea.gameObject.SetActive (true);
-		sceneStack.InsteadAreaStack(targetArea);
-	}
+		if(isAreaFading == true)
+			return;
 
+		isAreaFading = true;
+		StartCoroutine(FadeToAction(FadingSpeed,delegate {
+			AreaClass nowArea = sceneStack.GetLastAreaStack ();
+			nowArea.gameObject.SetActive (false);
+			targetArea.gameObject.SetActive (true);
+			sceneStack.InsteadAreaStack(targetArea);
+			isAreaFading = false;
+		}));
+	}
 	public void GoBackArea(){
+		if(isAreaFading == true)
+			return;
+
 		AreaClass nowArea = sceneStack.PullAreaStack ();
+		//Prevent no Area to Back bug
 		if(nowArea == null)
 			return;
-		AreaClass previousArea = sceneStack.GetLastAreaStack ();
-		nowArea.gameObject.SetActive (false);
-		previousArea.gameObject.SetActive (true);
+
+		isAreaFading = true;
+		StartCoroutine(FadeToAction(FadingSpeed,delegate {
+			AreaClass previousArea = sceneStack.GetLastAreaStack ();
+			nowArea.gameObject.SetActive (false);
+			previousArea.gameObject.SetActive (true);
+			isAreaFading = false;
+		}));
 	}
+	IEnumerator FadeToAction(float duration, System.Action runAction){
+		BlackMask.MaskShow(duration);
+		yield return new WaitForSeconds(duration);
+		runAction();
+		BlackMask.MaskHide(duration);
+	}
+
+	//////////////////////////////////
 
 	public void ShowTextOverlay(string src){
 		objectTextOverlay.SetText (src);

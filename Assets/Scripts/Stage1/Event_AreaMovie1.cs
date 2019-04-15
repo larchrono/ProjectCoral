@@ -10,10 +10,10 @@ public class Event_AreaMovie1 : MonoBehaviour
 {
 
     [SerializeField]
-    VideoPlayer BackgroundVideo;
+    VideoPlayer BackgroundVideo = null;
 
     [SerializeField]
-    VideoPlayer introMovie;
+    VideoPlayer introMovie = null;
 
     public void AddOverlayCloseAction(){
         GetItemOverlay.instance.closeOverlay += OnCloseOverlay;

@@ -12,7 +12,7 @@ public class Event_Area4 : MonoBehaviour {
 	[Space(10)]
 
 	[SerializeField]
-	GameObject ControlCenterDoor;
+	GameObject ControlCenterDoor = null;
 
 	bool hasGetWorkPermit;
 	bool hasTouchNewspaper;

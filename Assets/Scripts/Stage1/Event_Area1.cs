@@ -8,17 +8,17 @@ using DG.Tweening;
 public class Event_Area1 : MonoBehaviour
 {
     [SerializeField]
-    AudioSource _bgm;
+    AudioSource _bgm = null;
     [SerializeField]
-    Image PreBlackView;
+    Image PreBlackView = null;
     [SerializeField]
-    VideoPlayer PreMovie;
+    VideoPlayer PreMovie = null;
 
     [SerializeField]
-    GameObject ButtonBackArea;
+    GameObject ButtonBackArea = null;
 
     [SerializeField]
-    BagItem theKey;
+    BagItem theKey = null;
 
     bool hasRunIntrol;
 

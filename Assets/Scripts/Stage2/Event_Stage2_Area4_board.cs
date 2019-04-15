@@ -6,31 +6,31 @@ using UnityEngine.UI;
 public class Event_Stage2_Area4_board : MonoBehaviour {
 
 	[SerializeField]
-	SceneInteractive sceneInteractive;
+	SceneInteractive sceneInteractive = null;
 
 	[SerializeField]
-	GameObject Prefab_ChalkCircle;
+	GameObject Prefab_ChalkCircle = null;
 
 	[SerializeField]
-	Transform Background_Q1;
+	Transform Background_Q1 = null;
 	[SerializeField]
-	Transform Background_Q2;
+	Transform Background_Q2 = null;
 	[SerializeField]
-	Transform nowBackground;
-
-	[Space(10)]
-	[SerializeField]
-	GameObject Image_OutsideQuestion;
+	Transform nowBackground = null;
 
 	[Space(10)]
 	[SerializeField]
-	Image Image_SecondBoard;
+	GameObject Image_OutsideQuestion = null;
+
+	[Space(10)]
+	[SerializeField]
+	Image Image_SecondBoard = null;
 
 	[SerializeField]
-	Button Button_Crack;
+	Button Button_Crack = null;
 
 	[SerializeField]
-	AudioSource SNDChalkUse;
+	AudioSource SNDChalkUse = null;
 
 	bool[] CirclesQ1 = new bool[5];
 	GameObject[] ImageCirclesQ1 = new GameObject[5];

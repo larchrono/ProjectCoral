@@ -6,25 +6,25 @@ using UnityEngine.UI;
 public class Event_Stage2_Area4_desk : MonoBehaviour {
 
 	[SerializeField]
-	SceneInteractive sceneInteractive;
+	SceneInteractive sceneInteractive = null;
 	[Space(10)]
 	[SerializeField]
-	GameObject Image_ExcavatorBase;
+	GameObject Image_ExcavatorBase = null;
 
 	[SerializeField]
-	Button Button_UseBody;
+	Button Button_UseBody = null;
 	[SerializeField]
-	Button Button_UseHand;
+	Button Button_UseHand = null;
 	[SerializeField]
-	Button Button_GetExcavator;
+	Button Button_GetExcavator = null;
 	[SerializeField]
-	Button Button_TextOverlay;
+	Button Button_TextOverlay = null;
 
 	[SerializeField]
-	Image Image_Lobby_ExcavatorBase;
+	Image Image_Lobby_ExcavatorBase = null;
 
 	[SerializeField]
-	AudioSource SNDExcavatorMake;
+	AudioSource SNDExcavatorMake = null;
 
 	public void UseExcavatorBody(){
 		if (sceneInteractive.GetItemUseResult ()) {

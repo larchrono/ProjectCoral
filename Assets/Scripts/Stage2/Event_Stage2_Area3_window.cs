@@ -6,21 +6,21 @@ using UnityEngine.UI;
 public class Event_Stage2_Area3_window : MonoBehaviour {
 
 	[SerializeField]
-	Animator ImagePuzzleBackground;
+	Animator ImagePuzzleBackground = null;
 
 	public Animator[] Puzzles;
 
 	[SerializeField]
-	AudioSource SNDPuzzleChange;
+	AudioSource SNDPuzzleChange = null;
 	[SerializeField]
-	AudioSource SNDPuzzleFinished;
+	AudioSource SNDPuzzleFinished = null;
 
 	[SerializeField]
 	int nowFocusPuzzleId = - 1;
 
 	[Space(10)]
 	[SerializeField]
-	Image Image_OutdiseWindow;
+	Image Image_OutdiseWindow = null;
 
 	bool isFinish = false;
 

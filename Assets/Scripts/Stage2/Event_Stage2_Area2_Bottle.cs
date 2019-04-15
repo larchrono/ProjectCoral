@@ -6,24 +6,24 @@ using UnityEngine.UI;
 public class Event_Stage2_Area2_Bottle : MonoBehaviour {
 
 	[SerializeField]
-	SceneInteractive sceneInteractive;
+	SceneInteractive sceneInteractive = null;
 	[SerializeField]
-	Image Image_Background;
+	Image Image_Background = null;
 	[SerializeField]
-	Sprite[] Sprite_PutSteps;
+	Sprite[] Sprite_PutSteps = null;
 
 	[Space(10)]
 	[SerializeField]
-	Button Button_Undone;
+	Button Button_Undone = null;
 	[SerializeField]
-	Button[] Buttons_CanPutItem;
+	Button[] Buttons_CanPutItem = null;
 	[Space(10)]
 	[SerializeField]
-	Button LeaveStage;
+	Button LeaveStage = null;
 	[SerializeField]
-	Image Image_OutsideBackground;
+	Image Image_OutsideBackground = null;
 	[SerializeField]
-	Sprite Sprite_Outside_Finish;
+	Sprite Sprite_Outside_Finish = null;
 
 	void OnEnable()
 	{

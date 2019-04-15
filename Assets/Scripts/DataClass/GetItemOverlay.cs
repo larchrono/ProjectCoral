@@ -10,10 +10,10 @@ public class GetItemOverlay : MonoBehaviour {
 	public event EventHandler closeOverlay;
 
     [SerializeField]
-    Text TextItemName;
+    Text TextItemName = null;
 
     [SerializeField]
-    Image ImageItemIcon;
+    Image ImageItemIcon = null;
 
 	void Awake() {
 		instance = this;
