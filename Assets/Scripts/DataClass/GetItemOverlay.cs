@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GetItemOverlay : MonoBehaviour {
 
-	public static GetItemOverlay instance;
+	public static GetItemOverlay main;
 	public event EventHandler closeOverlay;
 
     [SerializeField]
@@ -16,7 +16,7 @@ public class GetItemOverlay : MonoBehaviour {
     Image ImageItemIcon = null;
 
 	void Awake() {
-		instance = this;
+		main = this;
 	}
 
 	public void OnCloseOverlay(){

@@ -10,10 +10,13 @@ public class SceneInteractive : MonoBehaviour {
 
 	public SceneStack sceneStack;
 	public GameObject PrefabSelectedRect;
+	public GameObject canvasScene;
+	private CanvasScaler sceneScaler;
+	private Vector2 defaultResolution;
+	private Vector2 scaleTargetResolution;
+	private Tween nowScalingTween;
+
 	[Space(10)]
-	public TextOverlay objectTextOverlay;
-	public ImageOverlay objectImageOverlay;
-	public ScrollImageOverlay objectScrollImageOverlay;
 	public GameObject UserBagPanelObject;
 	//public GameObject BagTitleObject;
 	[Space(10)]
@@ -31,10 +34,26 @@ public class SceneInteractive : MonoBehaviour {
 	AudioSource SNDGetItem = null;
 
 	public float FadingSpeed;
+	public float scaleSpeed;
+	[Range(0,0.9f)]
+	public float sceneScaleValue;
+
+	public enum ZoomDirect {
+		Go,
+		Back
+	}
 
 	// Use this for initialization
 	void Start () {
 		main = this;
+
+		//Canvas Zoom
+		sceneScaler = canvasScene.GetComponent<CanvasScaler>();
+		defaultResolution = sceneScaler.referenceResolution;
+		float valueTargetScaleX = defaultResolution.x;
+		float valueTargetScaleY = (defaultResolution.y * (1 - sceneScaleValue));
+		scaleTargetResolution = new Vector2(valueTargetScaleX,valueTargetScaleY);
+
 	}
 
 	public void LogMessage(){
@@ -58,7 +77,7 @@ public class SceneInteractive : MonoBehaviour {
 			return;
 
 		isAreaFading = true;
-		StartCoroutine(FadeToAction(FadingSpeed,delegate {
+		StartCoroutine(FadeToAction(FadingSpeed,ZoomDirect.Go,delegate {
 			AreaClass nowArea = sceneStack.GetLastAreaStack ();
 			nowArea.gameObject.SetActive (false);
 			targetArea.gameObject.SetActive (true);
@@ -71,7 +90,7 @@ public class SceneInteractive : MonoBehaviour {
 			return;
 
 		isAreaFading = true;
-		StartCoroutine(FadeToAction(FadingSpeed,delegate {
+		StartCoroutine(FadeToAction(FadingSpeed,ZoomDirect.Go,delegate {
 			AreaClass nowArea = sceneStack.GetLastAreaStack ();
 			nowArea.gameObject.SetActive (false);
 			targetArea.gameObject.SetActive (true);
@@ -89,40 +108,66 @@ public class SceneInteractive : MonoBehaviour {
 			return;
 
 		isAreaFading = true;
-		StartCoroutine(FadeToAction(FadingSpeed,delegate {
+		StartCoroutine(FadeToAction(FadingSpeed,ZoomDirect.Back,delegate {
 			AreaClass previousArea = sceneStack.GetLastAreaStack ();
 			nowArea.gameObject.SetActive (false);
 			previousArea.gameObject.SetActive (true);
 			isAreaFading = false;
 		}));
 	}
-	IEnumerator FadeToAction(float duration, System.Action runAction){
+	IEnumerator FadeToAction(float duration,ZoomDirect dir, System.Action runAction){
 		BlackMask.MaskShow(duration);
 		yield return new WaitForSeconds(duration);
 		runAction();
+		ZoomCanvas(dir);
 		BlackMask.MaskHide(duration);
 	}
+
+	void ZoomCanvas(ZoomDirect dir){
+		
+		switch(dir){
+			case ZoomDirect.Go :
+			if(nowScalingTween != null)
+				nowScalingTween.Kill();
+			sceneScaler.referenceResolution = defaultResolution;
+			nowScalingTween = DOTween.To(()=> sceneScaler.referenceResolution, x => sceneScaler.referenceResolution = x, scaleTargetResolution, scaleSpeed);
+			
+			break;
+
+			case ZoomDirect.Back :
+			if(nowScalingTween != null)
+				nowScalingTween.Kill();
+			sceneScaler.referenceResolution = scaleTargetResolution;
+			nowScalingTween = DOTween.To(()=> sceneScaler.referenceResolution, x => sceneScaler.referenceResolution = x, defaultResolution, scaleSpeed);
+			break;
+
+			default:
+			break;
+		}
+	}
+
+
 
 	//////////////////////////////////
 
 	public void ShowTextOverlay(string src){
-		objectTextOverlay.SetText (src);
-		objectTextOverlay.gameObject.SetActive (true);
+		TextOverlay.main.SetText (src);
+		TextOverlay.main.gameObject.SetActive (true);
 	}
 
 	public void ShowImageOverlay(ImageOverlayClass src){
-		objectImageOverlay.SetImage (src);
-		objectImageOverlay.gameObject.SetActive (true);
+		ImageOverlay.main.SetImage (src);
+		ImageOverlay.main.gameObject.SetActive (true);
 	}
 
 	public void ShowItemOverlay(BagItem src){
-		GetItemOverlay.instance.SetItemInfo(src);
-		GetItemOverlay.instance.gameObject.SetActive(true);
+		GetItemOverlay.main.SetItemInfo(src);
+		GetItemOverlay.main.gameObject.SetActive(true);
 	}
 
 	public void ShowScrollImageOverlay(ImageOverlayClass src){
-		objectScrollImageOverlay.SetImage (src);
-		objectScrollImageOverlay.gameObject.SetActive (true);
+		ScrollImageOverlay.main.SetImage (src);
+		ScrollImageOverlay.main.gameObject.SetActive (true);
 	}
 
 	public void SwitchGameObjectActive(GameObject src){

@@ -48,6 +48,7 @@ public class TestRepeatRegist : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.D)){
             testEvent -= TestReg;
+            Screen.SetResolution(640, 480, false, 60);
         }
     }
 

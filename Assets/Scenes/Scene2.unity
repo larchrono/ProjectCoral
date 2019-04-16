@@ -16248,15 +16248,15 @@ MonoBehaviour:
   sceneStack: {fileID: 1606795528}
   PrefabSelectedRect: {fileID: 1680776790465582, guid: 79497def943029440aaf36011b85de38,
     type: 3}
-  objectTextOverlay: {fileID: 1307038703}
-  objectImageOverlay: {fileID: 1318588443}
-  objectScrollImageOverlay: {fileID: 1622161272}
+  canvasScene: {fileID: 796963164}
   UserBagPanelObject: {fileID: 767804920}
   itemNowFocus: {fileID: 0}
   rectNowSelected: {fileID: 0}
   inIdle: 0
   SNDGetItem: {fileID: 1513417976}
   FadingSpeed: 0.2
+  scaleSpeed: 0.8
+  sceneScaleValue: 0.05
 --- !u!4 &1671764338
 Transform:
   m_ObjectHideFlags: 0

@@ -1191,7 +1191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 220.00002, y: 0}
+  m_AnchoredPosition: {x: 220, y: 0}
   m_SizeDelta: {x: 220, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &146110492
@@ -13383,15 +13383,15 @@ MonoBehaviour:
   sceneStack: {fileID: 653390202}
   PrefabSelectedRect: {fileID: 1680776790465582, guid: 79497def943029440aaf36011b85de38,
     type: 3}
-  objectTextOverlay: {fileID: 1646699410}
-  objectImageOverlay: {fileID: 886111664}
-  objectScrollImageOverlay: {fileID: 627634361}
+  canvasScene: {fileID: 796963164}
   UserBagPanelObject: {fileID: 146110490}
   itemNowFocus: {fileID: 0}
   rectNowSelected: {fileID: 0}
   inIdle: 0
   SNDGetItem: {fileID: 1441030005}
   FadingSpeed: 0.2
+  scaleSpeed: 0.8
+  sceneScaleValue: 0.05
 --- !u!4 &1671764338
 Transform:
   m_ObjectHideFlags: 0
@@ -13535,7 +13535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.000015, y: 100}
+  m_AnchoredPosition: {x: -50, y: 100}
   m_SizeDelta: {x: -2179.1064, y: 79.97183}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1688549922

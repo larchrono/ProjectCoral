@@ -16,12 +16,12 @@ public class Event_AreaMovie1 : MonoBehaviour
     VideoPlayer introMovie = null;
 
     public void AddOverlayCloseAction(){
-        GetItemOverlay.instance.closeOverlay += OnCloseOverlay;
+        GetItemOverlay.main.closeOverlay += OnCloseOverlay;
     }
 
     public void OnCloseOverlay(object sender, EventArgs e){
         StartCoroutine(FadeToNext());
-        GetItemOverlay.instance.closeOverlay -= OnCloseOverlay;
+        GetItemOverlay.main.closeOverlay -= OnCloseOverlay;
     }
 
     IEnumerator FadeToNext(){
