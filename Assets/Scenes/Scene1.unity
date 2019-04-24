@@ -866,18 +866,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1671764337}
-    - target: {fileID: 4897764966087957693, guid: 62b2cf22a9b9d9f4da0c35a3200f6bc1,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: cf90d76da04e315458bceb60c58ca5db,
-        type: 3}
-    - target: {fileID: 4897764967465383129, guid: 62b2cf22a9b9d9f4da0c35a3200f6bc1,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: cf90d76da04e315458bceb60c58ca5db,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b2cf22a9b9d9f4da0c35a3200f6bc1, type: 3}
 --- !u!224 &76676533 stripped
@@ -11794,17 +11782,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7697048845782599815, guid: 905e9f6c76eedf242999c423d7bbc78c,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: cf90d76da04e315458bceb60c58ca5db,
-        type: 3}
-    - target: {fileID: 7697048844807942463, guid: 905e9f6c76eedf242999c423d7bbc78c,
-        type: 3}
-      propertyPath: normal_YPOS
-      value: -100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 905e9f6c76eedf242999c423d7bbc78c, type: 3}
@@ -22790,7 +22767,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 63d42233f8939ac4389e36ea80f1446e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 570ebc3ab5f75d8498beea2a74b30184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

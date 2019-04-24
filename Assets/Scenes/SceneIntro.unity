@@ -915,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd01a764527a3d344ba70221f747b3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontAutoRelease: 0
 --- !u!328 &599364177
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1706,7 +1707,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 63d42233f8939ac4389e36ea80f1446e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 570ebc3ab5f75d8498beea2a74b30184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1897,7 +1898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21634f2cdf5eb844ba4093c5793c1b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text_Debug: {fileID: 0}
   sceneStack: {fileID: 1855269402}
   PrefabSelectedRect: {fileID: 1680776790465582, guid: 79497def943029440aaf36011b85de38,
     type: 3}
