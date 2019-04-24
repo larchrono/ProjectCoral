@@ -15,6 +15,8 @@ public class Event_Stage2_Area3 : MonoBehaviour {
 	public AudioSource StampSound;
 	public AudioSource MenuFinished;
 
+	public QueueAction WhenFinishStamp;
+
 
 	bool[] Stamps = new bool[7];
 	GameObject[] ImageStamps = new GameObject[7];
@@ -60,6 +62,8 @@ public class Event_Stage2_Area3 : MonoBehaviour {
 
 			sceneInteractive.RemoveBagItem ("印章");
 			MenuFinished.Play ();
+			SceneInteractive.main.GoBackArea();
+			WhenFinishStamp.Invoke();
 		}
 	}
 }

@@ -26,6 +26,8 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 	[SerializeField]
 	AudioSource SNDExcavatorMake = null;
 
+	public QueueAction FinishCombine;
+
 	public void UseExcavatorBody(){
 		if (sceneInteractive.GetItemUseResult ()) {
 			
@@ -48,15 +50,23 @@ public class Event_Stage2_Area4_desk : MonoBehaviour {
 			Image_ExcavatorBase.GetComponent<UsedSpritePool>().SetSpriteToPoolID(2);
 
 			Button_UseHand.gameObject.SetActive (false);
-			Button_GetExcavator.gameObject.SetActive (true);
+			//Button_GetExcavator.gameObject.SetActive (true);
 			Button_TextOverlay.gameObject.SetActive (false);
 
 			Image_Lobby_ExcavatorBase.GetComponent<UsedSpritePool>().SetSpriteToPoolID(2);
 
 			SNDExcavatorMake.Play ();
+			
+			StartCoroutine(GetExcavator());
+
 		} else {
 			sceneInteractive.ShowTextOverlay ("它好像還缺少一些零件組合起來");
 		}
+	}
+
+	IEnumerator GetExcavator(){
+		yield return new WaitForSeconds(0.7f);
+		FinishCombine.Invoke();
 	}
 
 }

@@ -27,6 +27,8 @@ public class Event_Stage2_Area2_Bottle : MonoBehaviour {
 
 	void OnEnable()
 	{
+		return;
+
 		if (!sceneInteractive.CheckBagHasItem ("怪手"))
 			return;
 		if (!sceneInteractive.CheckBagHasItem ("小樹苗"))
@@ -48,8 +50,10 @@ public class Event_Stage2_Area2_Bottle : MonoBehaviour {
 	}
 
 	public void PutItem(int step){
-		if (!sceneInteractive.GetItemUseResult ())
+		if (!sceneInteractive.GetItemUseResult ()){
+			SceneInteractive.main.ShowTextOverlay("葉子、魚、網子、挖土機？");
 			return;
+		}
 		
 		Image_Background.sprite = Sprite_PutSteps[step];
 		Buttons_CanPutItem[step].gameObject.SetActive (false);

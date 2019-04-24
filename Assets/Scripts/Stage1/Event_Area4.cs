@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Event_Area4 : MonoBehaviour {
 
@@ -44,6 +45,13 @@ public class Event_Area4 : MonoBehaviour {
 		AlertLight.SetActive (true);
 		AlertLoop.Play ();
 		ControlCenterDoor.SetActive(true);
+		StartCoroutine(AlertLoopSetting());
+	}
+
+	IEnumerator AlertLoopSetting(){
+		yield return new WaitForSeconds(5.0f);
+		float targetVolume = AlertLoop.volume/3;
+		AlertLoop.DOFade(targetVolume,5.0f);
 	}
 
 	// A condition for Door open

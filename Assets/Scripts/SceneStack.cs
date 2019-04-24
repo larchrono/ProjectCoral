@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneStack : MonoBehaviour {
+	public static SceneStack main;
 
 	// in MonoBehaviour , this variable (public) will be alloc automatic
 	public List<AreaClass> AreaStack;
+
+	void Awake(){
+		main = this;
+	}
 
 	public AreaClass GetLastAreaStack() {
 		int cnt = AreaStack.Count;

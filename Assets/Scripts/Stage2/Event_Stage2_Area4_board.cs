@@ -23,11 +23,6 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	GameObject Image_OutsideQuestion = null;
 
 	[Space(10)]
-	[SerializeField]
-	Image Image_SecondBoard = null;
-
-	[SerializeField]
-	Button Button_Crack = null;
 
 	[SerializeField]
 	AudioSource SNDChalkUse = null;
@@ -37,6 +32,8 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 
 	bool[] CirclesQ2 = new bool[4];
 	GameObject[] ImageCirclesQ2 = new GameObject[4];
+
+	public QueueAction BoardFinished;
 
 	Vector2 templatePos;
 
@@ -48,6 +45,14 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 
 	public void SetTemplatePos(RectTransform trans){
 		templatePos = trans.anchoredPosition;
+	}
+
+	public void ItemCarryForMessange(){
+		if(SceneInteractive.main.CheckBagHasItem("粉筆")){
+			//SceneInteractive.main.ShowTextOverlay("我來回答看看");
+		} else {
+			SceneInteractive.main.ShowTextOverlay("好像是黑板！粉筆");
+		}
 	}
 
 	IEnumerator CreateCircle(int id, int Ques){
@@ -148,8 +153,7 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 			yield return new WaitForSeconds (1.0f);
 			isDrawing = false;
 
-			Image_SecondBoard.GetComponent<UsedSpritePool>().SetSpriteToPoolID(1);
-			Button_Crack.gameObject.SetActive (true);
+			BoardFinished.Invoke();
 
 			//sceneInteractive.DestroyNowFocusBagItem ();
 			sceneInteractive.RemoveBagItem("粉筆");

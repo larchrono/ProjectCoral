@@ -5,6 +5,7 @@ using UnityEngine.Video;
 
 public class Event_AreaMovie0 : MonoBehaviour
 {
+    [Header("Setting Video callback to NextArea")]
 
     [SerializeField]
     AreaClass nextArea = null;
@@ -16,10 +17,13 @@ public class Event_AreaMovie0 : MonoBehaviour
     void Start()
     {
         introVideo.loopPointReached += IntroEndReached;
+        SceneInteractive.main.frontVideo = introVideo;
+        
     }
 
     void IntroEndReached(VideoPlayer vp)
     {
-        SceneInteractive.main.GoToAreaNoStack(nextArea);
+        //SceneInteractive.main.GoToAreaNoStack(nextArea);
+        IndexMenu.main.LoadSceneWithFade("Scene1");
     }
 }

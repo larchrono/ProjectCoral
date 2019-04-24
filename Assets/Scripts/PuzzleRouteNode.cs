@@ -12,4 +12,8 @@ public class PuzzleRouteNode : MonoBehaviour {
 	[Space(10)]
 
 	public int DegreeNumber;
+
+	public bool isGoal;
+
+
 }

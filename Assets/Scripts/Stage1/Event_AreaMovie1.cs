@@ -15,6 +15,10 @@ public class Event_AreaMovie1 : MonoBehaviour
     [SerializeField]
     VideoPlayer introMovie = null;
 
+    void Start(){
+        SceneInteractive.main.frontVideo = BackgroundVideo;
+    }
+
     public void AddOverlayCloseAction(){
         GetItemOverlay.main.closeOverlay += OnCloseOverlay;
     }
@@ -35,6 +39,8 @@ public class Event_AreaMovie1 : MonoBehaviour
 
         introMovie.gameObject.SetActive(true);
         introMovie.loopPointReached += EndIntroMovie;
+
+        SceneInteractive.main.frontVideo = introMovie;
 
         //RawImage _rawImage = introMovie.GetComponent<RawImage>();
         //_rawImage.DOFade(1,1.5f);

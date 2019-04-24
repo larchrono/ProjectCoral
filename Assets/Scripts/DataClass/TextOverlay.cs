@@ -3,24 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using DG.Tweening;
 
 public class TextOverlay : MonoBehaviour {
 
 	public static TextOverlay main;
-
-	public event EventHandler closeOverlay;
+	public event EventHandler OverlayFinish;
 
 	public Text textShow;
 	public RectTransform textPanel;
-	public Button ButtonBackground;
 
 	[Space(10)]
 
-	public float TextFlyHeight;
-	public float TextFlySpeed;
-	float TextBaseLoc = -100;
+	public float normal_YPOS;
+    public float pop_YPOS;
+    public float TimeFly;
+    public float TimeStay;
+
+	Sequence seqAction;
 
 	//Need set Active in Scene or Set it into Init scripts
 	void Awake() {
@@ -28,22 +28,37 @@ public class TextOverlay : MonoBehaviour {
 		gameObject.SetActive(false);
 	}
 
-	public void OnCloseOverlay(){
-		if(closeOverlay != null){
-			closeOverlay(this, new EventArgs());
+	void OnOverlayFinish(){
+		if(OverlayFinish != null){
+			OverlayFinish(this, new EventArgs());
 		}
-		textPanel.DOAnchorPosY(TextBaseLoc,TextFlySpeed).OnComplete(CompleteAnim);
 	}
 
-	void CompleteAnim(){
-		ButtonBackground.interactable = true;
-		gameObject.SetActive(false);
-	}
+	public void StartTextPop(){
+		if(seqAction != null){
+			if(seqAction.IsComplete()){
+				seqAction.Restart();
+			} else {
+				seqAction.Goto(TimeFly,true);
+			}
+		} else {
+        	seqAction = DOTween.Sequence()
+            .OnStart(()=>{
+                textPanel.anchoredPosition = new Vector2(0,normal_YPOS);
+            })
+            .Append(textPanel.DOAnchorPosY(pop_YPOS,TimeFly))
+            .AppendInterval(TimeStay)
+            .Append(textPanel.DOAnchorPosY(normal_YPOS,TimeFly))
+            .OnComplete(OnOverlayFinish)
+			.SetAutoKill(false);
+
+			seqAction.Play();
+		}
+    }
 
 	public void SetText(string src){
 		textShow.text = src;
-
-		textPanel.anchoredPosition = new Vector2(0,-100);
-		textPanel.DOAnchorPosY(TextFlyHeight,TextFlySpeed);
+		StartTextPop();
+		gameObject.SetActive(true);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -11,6 +12,7 @@ public class SceneInteractive : MonoBehaviour {
 	public SceneStack sceneStack;
 	public GameObject PrefabSelectedRect;
 	public GameObject canvasScene;
+	public VideoPlayer frontVideo;
 	private CanvasScaler sceneScaler;
 	private Vector2 defaultResolution;
 	private Vector2 scaleTargetResolution;
@@ -43,10 +45,12 @@ public class SceneInteractive : MonoBehaviour {
 		Back
 	}
 
+	void Awake(){
+		main = this;
+	}
+
 	// Use this for initialization
 	void Start () {
-		main = this;
-
 		//Canvas Zoom
 		sceneScaler = canvasScene.GetComponent<CanvasScaler>();
 		defaultResolution = sceneScaler.referenceResolution;
@@ -326,6 +330,22 @@ public class SceneInteractive : MonoBehaviour {
 	}
 	public void RemoveButtonListener(Button button){
 		button.onClick.RemoveAllListeners ();
+	}
+
+
+	public void VideoPause(){
+		if(frontVideo != null)
+			frontVideo.Pause();
+	}
+
+	public void VideoResume(){
+		if(frontVideo != null)
+			frontVideo.Play();
+	}
+
+	public void DebugMsg(string msg){
+		if(OverlayDebug.main != null)
+			OverlayDebug.main.QueueString(msg);
 	}
 
 

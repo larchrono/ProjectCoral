@@ -15,18 +15,20 @@ public class Init_Stage : MonoBehaviour
     [SerializeField]
     GameObject[] NeedInitOverlays = null;
 
+    void Awake() {
+        foreach (var item in NeedInitOverlays)
+        {
+            item.SetActive(true);
+            item.SetActive(false);
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
         SettingSoundOption();
 
         willRunAction.Invoke();
-
-        foreach (var item in NeedInitOverlays)
-        {
-            item.SetActive(true);
-            item.SetActive(false);
-        }
     }
 
     public void SettingSoundOption()

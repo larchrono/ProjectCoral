@@ -14,11 +14,7 @@ public class Event_Area1 : MonoBehaviour
     [SerializeField]
     VideoPlayer PreMovie = null;
 
-    [SerializeField]
-    GameObject ButtonBackArea = null;
-
-    [SerializeField]
-    BagItem theKey = null;
+    public QueueAction EyeOpenFinished;
 
     bool hasRunIntrol;
 
@@ -30,6 +26,7 @@ public class Event_Area1 : MonoBehaviour
             PreMovie.started += RemovePreBlackView;
             PreMovie.loopPointReached += PreMovieEnd;
             hasRunIntrol = true;
+            SceneInteractive.main.DebugMsg("Area1 _ Start");
         }
     }
 
@@ -38,6 +35,7 @@ public class Event_Area1 : MonoBehaviour
             yield return null;
         }
         PreBlackView.gameObject.SetActive(false);
+        
     }
 
     void RemovePreBlackView(VideoPlayer vp){
@@ -45,9 +43,7 @@ public class Event_Area1 : MonoBehaviour
     }
 
     void PreMovieEnd(VideoPlayer vp){
-        SceneInteractive.main.GetItemNoSound(theKey);
-        ButtonBackArea.SetActive(true);
-        PreMovie.gameObject.SetActive(false);
+        EyeOpenFinished.Invoke();
     }
 
 }

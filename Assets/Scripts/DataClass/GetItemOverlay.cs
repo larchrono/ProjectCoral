@@ -9,6 +9,9 @@ public class GetItemOverlay : MonoBehaviour {
 	public static GetItemOverlay main;
 	public event EventHandler closeOverlay;
 
+	public Button Button_Background;
+	public float TimeItemStay;
+
     [SerializeField]
     Text TextItemName = null;
 
@@ -17,6 +20,7 @@ public class GetItemOverlay : MonoBehaviour {
 
 	void Awake() {
 		main = this;
+		gameObject.SetActive(false);
 	}
 
 	public void OnCloseOverlay(){
@@ -28,5 +32,13 @@ public class GetItemOverlay : MonoBehaviour {
 	public void SetItemInfo(BagItem src){
         TextItemName.text = src.bagName;
         ImageItemIcon.sprite = src.GetComponent<Image>().sprite;
+		gameObject.SetActive(true);
+		Button_Background.interactable = false;
+		StartCoroutine(ResumeInteractive());
+	}
+
+	IEnumerator ResumeInteractive(){
+		yield return new WaitForSeconds(TimeItemStay);
+		Button_Background.interactable = true;
 	}
 }
