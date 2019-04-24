@@ -11,12 +11,16 @@ public class AutoVideoImagePlay : MonoBehaviour
     VideoPlayer sourceVideo;
     RenderTexture renderTexture;
 
+    public bool dontAutoRelease;
+
+    void Awake(){
+        targetImage = GetComponent<RawImage>();
+        sourceVideo = GetComponent<VideoPlayer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        targetImage = GetComponent<RawImage>();
-        sourceVideo = GetComponent<VideoPlayer>();
-
         targetImage.enabled = true;
 
         int rW = Mathf.FloorToInt(targetImage.rectTransform.rect.width);
@@ -34,6 +38,14 @@ public class AutoVideoImagePlay : MonoBehaviour
     }
 
     void OnDisable() {
+        if(dontAutoRelease)
+            return;
         renderTexture.Release();
+    }
+
+    public void ResetVideoAndPlay(){
+        sourceVideo.Stop();
+        //sourceVideo.time = 0;
+        sourceVideo.Play();
     }
 }

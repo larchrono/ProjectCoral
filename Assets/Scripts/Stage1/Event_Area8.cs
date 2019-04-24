@@ -5,7 +5,7 @@ using UnityEngine.Video;
 
 public class Event_Area8 : MonoBehaviour
 {
-
+    [Header("Release Texture and Add End movie callback")]
     public VideoPlayer endMoive;
     public RenderTexture targetTexture;
 
