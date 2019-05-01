@@ -7,7 +7,9 @@ public class TestScript : MonoBehaviour {
 	public GameObject[] WillTurnOn;
 	public GameObject[] WillTurnOff;
 
-	public BagItem testingItem;
+	public QueueAction WhenPressA;
+
+	public QueueAction WhenPressQ;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +23,10 @@ public class TestScript : MonoBehaviour {
 
 	void Update() {
 		if(Input.GetKeyDown(KeyCode.A)){
-			SceneInteractive.main.GetItem(testingItem);
+			WhenPressA.Invoke();
+		}
+		if(Input.GetKeyDown(KeyCode.Q)){
+			WhenPressQ.Invoke();
 		}
 	}
 

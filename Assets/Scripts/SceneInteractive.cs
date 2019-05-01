@@ -252,6 +252,7 @@ public class SceneInteractive : MonoBehaviour {
 	}
 
 	public void RemoveBagItem(string itemName){
+		//Debug.Log("Should Remove Name:" + itemName);
 		foreach (Transform child in UserBagPanelObject.transform) {
 			BagItem item = child.GetComponent<BagItem> ();
 			if (item != null) {

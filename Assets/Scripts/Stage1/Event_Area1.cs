@@ -14,6 +14,8 @@ public class Event_Area1 : MonoBehaviour
     [SerializeField]
     VideoPlayer PreMovie = null;
 
+    public float BGMVolumeFadeTo;
+
     public QueueAction EyeOpenFinished;
 
     bool hasRunIntrol;
@@ -22,7 +24,7 @@ public class Event_Area1 : MonoBehaviour
     void Start()
     {
         if(!hasRunIntrol){
-            DOTween.To(()=> _bgm.volume, x => _bgm.volume = x , 0.7f , 5);
+            DOTween.To(()=> _bgm.volume, x => _bgm.volume = x , BGMVolumeFadeTo , 5);
             PreMovie.started += RemovePreBlackView;
             PreMovie.loopPointReached += PreMovieEnd;
             hasRunIntrol = true;
@@ -40,6 +42,7 @@ public class Event_Area1 : MonoBehaviour
 
     void RemovePreBlackView(VideoPlayer vp){
         StartCoroutine(RemovePreBlackView());
+        
     }
 
     void PreMovieEnd(VideoPlayer vp){

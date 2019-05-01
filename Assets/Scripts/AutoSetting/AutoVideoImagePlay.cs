@@ -13,6 +13,8 @@ public class AutoVideoImagePlay : MonoBehaviour
 
     public bool dontAutoRelease;
 
+    public bool StayFirstFrame;
+
     void Awake(){
         targetImage = GetComponent<RawImage>();
         sourceVideo = GetComponent<VideoPlayer>();
@@ -34,7 +36,16 @@ public class AutoVideoImagePlay : MonoBehaviour
         }
             
         targetImage.texture = renderTexture;
-        
+
+        if(StayFirstFrame){
+            sourceVideo.Play();
+            StartCoroutine(FramePause());
+        }
+    }
+
+    IEnumerator FramePause(){
+        yield return null;
+        sourceVideo.Pause();
     }
 
     void OnDisable() {

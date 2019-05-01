@@ -84,7 +84,7 @@ TextureImporter:
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 49
+    textureFormat: 51
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -108,7 +108,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b93efeae30f44de4bbfa74cdeca9979b
+    spriteID: a6edf6e9e0f876943ab4556944e9d017
     internalID: 0
     vertices: []
     indices: 

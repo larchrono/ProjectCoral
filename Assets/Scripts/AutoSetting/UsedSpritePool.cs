@@ -16,6 +16,7 @@ public class UsedSpritePool : MonoBehaviour
         if(id >= UsedSprite.Length)
             return;
 
-        _img.sprite = UsedSprite[id];
+        _img.overrideSprite = UsedSprite[id];
+        //_img.sprite = UsedSprite[id];
     }
 }

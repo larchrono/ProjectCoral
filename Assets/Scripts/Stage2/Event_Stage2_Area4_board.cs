@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Event_Stage2_Area4_board : MonoBehaviour {
 
+
 	[SerializeField]
 	SceneInteractive sceneInteractive = null;
 
@@ -33,10 +34,14 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	bool[] CirclesQ2 = new bool[4];
 	GameObject[] ImageCirclesQ2 = new GameObject[4];
 
+	public QueueAction FinQuestion1;
+	public QueueAction FinQuestion2;
+
 	public QueueAction BoardFinished;
 
 	Vector2 templatePos;
 
+	Coroutine fakeFishCoroutine;
 
 	bool isCircleAFinish = false;
 	bool isCircleBFinish = false;
@@ -93,8 +98,6 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	}
 
 	public void MakeCircle_Q1(int id) {
-		if (!sceneInteractive.GetItemUseResult ())
-			return;
 		if (isDrawing)
 			return;
 		if (!CirclesQ1 [id]) {
@@ -102,6 +105,9 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 			SNDChalkUse.Play ();
 			StartCoroutine (CreateCircle (id, 1));
 
+			if(fakeFishCoroutine != null)
+				StopCoroutine(fakeFishCoroutine);
+				
 		} else {
 			CirclesQ1 [id] = false;
 			StartCoroutine (ClearCircle (id, 1));
@@ -109,8 +115,6 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	}
 
 	public void MakeCircle_Q2(int id) {
-		if (!sceneInteractive.GetItemUseResult ())
-			return;
 		if (isCircleBFinish)
 			return;
 		if (isDrawing)
@@ -131,6 +135,8 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 		if (CirclesQ1 [0] && !CirclesQ1 [1] && !CirclesQ1 [2] && CirclesQ1 [3] && !CirclesQ1 [4] && !isCircleAFinish) {
 			isCircleAFinish = true;
 
+			FinQuestion1.Invoke();
+
 			isDrawing = true;
 			yield return new WaitForSeconds (1.0f);
 			isDrawing = false;
@@ -148,6 +154,8 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 	IEnumerator CheckAllCircleQ2(){
 		if (CirclesQ2 [0] && CirclesQ2 [1] && CirclesQ2 [2] && CirclesQ2 [3] && !isCircleBFinish) {
 			isCircleBFinish = true;
+			
+			FinQuestion2.Invoke();
 
 			isDrawing = true;
 			yield return new WaitForSeconds (1.0f);
@@ -156,9 +164,18 @@ public class Event_Stage2_Area4_board : MonoBehaviour {
 			BoardFinished.Invoke();
 
 			//sceneInteractive.DestroyNowFocusBagItem ();
-			sceneInteractive.RemoveBagItem("粉筆");
+			//sceneInteractive.RemoveBagItem("粉筆");
 
 		}
+	}
+
+	public void FakeFishClick(){
+		fakeFishCoroutine =  StartCoroutine(DelayFakeFishClick());
+	}
+
+	IEnumerator DelayFakeFishClick(){
+		yield return new WaitForSeconds(2.0f);
+		SceneInteractive.main.ShowTextOverlay("再看近一點");
 	}
 
 }

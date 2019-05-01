@@ -8,14 +8,10 @@ public class Event_Stage2_Area3 : MonoBehaviour {
 	public GameObject ImageStampPrefabs;
 	public SceneInteractive sceneInteractive;
 
-	public Image Background_AreaMenu;
-	public Image Background_WoodFish;
-	public Button Button_Area3WoodFish;
-
 	public AudioSource StampSound;
-	public AudioSource MenuFinished;
 
 	public QueueAction WhenFinishStamp;
+	public QueueAction WhenFinishStamp_1sec;
 
 
 	bool[] Stamps = new bool[7];
@@ -56,14 +52,13 @@ public class Event_Stage2_Area3 : MonoBehaviour {
 	public void CheckAllStemps(){
 		if (Stamps [0] && !Stamps [1] && Stamps [2] && Stamps [3] && !Stamps [4] && Stamps [5] && !Stamps [6] && !isStampFinish) {
 			isStampFinish = true;
-			Background_AreaMenu.GetComponent<UsedSpritePool>().SetSpriteToPoolID(1);
-			Button_Area3WoodFish.gameObject.SetActive (true);
-			Background_WoodFish.gameObject.SetActive (true);
 
-			sceneInteractive.RemoveBagItem ("印章");
-			MenuFinished.Play ();
-			SceneInteractive.main.GoBackArea();
 			WhenFinishStamp.Invoke();
+			Invoke("DoWhenFinishStamp_1sec",1f);
 		}
+	}
+
+	void DoWhenFinishStamp_1sec(){
+		WhenFinishStamp_1sec.Invoke();
 	}
 }

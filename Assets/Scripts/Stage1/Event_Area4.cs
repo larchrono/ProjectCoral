@@ -49,9 +49,9 @@ public class Event_Area4 : MonoBehaviour {
 	}
 
 	IEnumerator AlertLoopSetting(){
-		yield return new WaitForSeconds(5.0f);
+		yield return new WaitForSeconds(2.5f);
 		float targetVolume = AlertLoop.volume/3;
-		AlertLoop.DOFade(targetVolume,5.0f);
+		AlertLoop.DOFade(targetVolume,0.5f);
 	}
 
 	// A condition for Door open

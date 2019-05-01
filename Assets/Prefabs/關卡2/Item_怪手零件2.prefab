@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4427c4ce3d9f3b947a99e0142faf3600, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e06abefb07e7f6448b74d4e8ebd7f702, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyID: 7
-  bagName: "\u602A\u624B\u96F6\u4EF6-\u722A\u5B50"
+  bagName: " \u602A\u624B\u96F6\u4EF6 "
 --- !u!114 &3801893874076230100
 MonoBehaviour:
   m_ObjectHideFlags: 0

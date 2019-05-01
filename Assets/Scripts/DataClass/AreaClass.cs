@@ -6,6 +6,7 @@ public class AreaClass : MonoBehaviour {
     
     public QueueAction AreaInit;
     public QueueAction AreaActive;
+    public QueueAction AreaClose;
 
     void Start(){
         AreaInit.Invoke();
@@ -13,5 +14,9 @@ public class AreaClass : MonoBehaviour {
 
     void OnEnable() {
         AreaActive.Invoke();
+    }
+
+    void OnDisable() {
+        AreaClose.Invoke();
     }
 }

@@ -35,6 +35,9 @@ public class Event_Area7_Type2 : MonoBehaviour
 
 	[SerializeField]
     public QueueAction WhenAfterGoal;
+
+	[SerializeField]
+    public QueueAction WhenAfterGoalStep2;
     
 
     // Start is called before the first frame update
@@ -168,11 +171,13 @@ public class Event_Area7_Type2 : MonoBehaviour
 	}
 
 	public void FinishSequence(){
-		StartCoroutine(SoundBreak());
+		StartCoroutine(AfterGoalSteps());
 	}
 
-	IEnumerator SoundBreak(){
+	IEnumerator AfterGoalSteps(){
 		yield return new WaitForSeconds(1.0f);
 		WhenAfterGoal.Invoke();
+		yield return new WaitForSeconds(1.0f);
+		WhenAfterGoalStep2.Invoke();
 	}
 }

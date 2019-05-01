@@ -9,12 +9,32 @@ public class StaticUtility : MonoBehaviour
 		Debug.Log (src);
 	}
 
+	public void LoadSceneWithFade(string src){
+		IndexMenu.main.LoadSceneWithFade(src);
+	}
+
 	public void ShowQuestionOverlay(Sprite quest){
 		OverlayQuest.main.StartQuestPop(quest);
 	}
 
 	public void ShowTextOverlay(string src){
 		TextOverlay.main.SetText(src);
+	}
+
+	public void ShowScrollImageOverlay(ImageOverlayClass src){
+		ScrollImageOverlay.main.SetImage (src);
+		ScrollImageOverlay.main.gameObject.SetActive (true);
+	}
+
+	public void SetBGM(bool src){
+		if(CrossSceneBGM.instance == null)
+			return;
+			
+		if(src){
+			CrossSceneBGM.instance.ResumeBGM();
+		} else {
+			CrossSceneBGM.instance.PauseBGM();
+		}
 	}
 
 	public void SetTimeScale(float src){

@@ -43,4 +43,12 @@ public class SceneStack : MonoBehaviour {
 		}
 		AreaStack.Add (area);
 	}
+
+	public void RemoveAreaFromStack(AreaClass area){
+		int index = AreaStack.FindIndex(x => x == area);
+		Debug.Log("find to remove index :" + index);
+		if(index != -1){
+			AreaStack.RemoveAt(index);
+		}
+	}
 }
