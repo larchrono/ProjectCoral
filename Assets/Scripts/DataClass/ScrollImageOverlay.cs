@@ -23,5 +23,16 @@ public class ScrollImageOverlay : MonoBehaviour
 			Destroy (imageShow.gameObject);
 		imageShow = Instantiate (src.gameObject, Content.transform, false).GetComponent<ImageOverlayClass>();
 		Content.content = imageShow.GetComponent<RectTransform> ();
+		Content.horizontal = false;
+		Content.vertical = true;
+	}
+
+	public void SetImageFreeSlide(ImageOverlayClass src){
+		if (imageShow != null)
+			Destroy (imageShow.gameObject);
+		imageShow = Instantiate (src.gameObject, Content.transform, false).GetComponent<ImageOverlayClass>();
+		Content.content = imageShow.GetComponent<RectTransform> ();
+		Content.horizontal = true;
+		Content.vertical = true;
 	}
 }

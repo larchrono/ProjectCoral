@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Event_Stage2_Area2_Bottle : MonoBehaviour {
 
-	public ButtonBack buttonBack;
-
 	public QueueAction WhenPutFinished;
 
 	public QueueAction AfterFinished;

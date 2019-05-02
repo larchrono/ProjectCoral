@@ -36,7 +36,8 @@ public class OverlayImagePinch : MonoBehaviour
             {
                 DoubleTouchLastDis = DoubleTouchCurrDis;
                 IsZooming = true;
-                scrollRect.enabled = false;
+                if(scrollRect != null)
+                    scrollRect.enabled = false;
             }
 
             float distance = DoubleTouchCurrDis - DoubleTouchLastDis;
@@ -55,7 +56,8 @@ public class OverlayImagePinch : MonoBehaviour
         if (Input.touchCount < 2)
         {
             IsZooming = false;
-            scrollRect.enabled = true;
+            if(scrollRect != null)
+                scrollRect.enabled = true;
         }
     }
 

@@ -141,4 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMVolume: 0.5
+  BGMMovieVolume: 1
   FadeInSecond: 10
+  MainBGM: {fileID: 8300000, guid: 738624dbdb2de38449cd876e8e303e90, type: 3}
+  MovieBGM: {fileID: 8300000, guid: 92f1c7c2ef134d6449a7ebc00e946ba3, type: 3}

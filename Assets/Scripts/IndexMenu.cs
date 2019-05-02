@@ -44,7 +44,21 @@ public class IndexMenu : MonoBehaviour {
 		GameObject src = GameObject.FindWithTag("ScreenBlackMask");
 		Image _blackMask = src.GetComponent<Image>();
 		_blackMask.DOFade(1,2f);
-		LoadSceneDelay("SceneIntro",2f);
+		int nowStage = GlobalVariables.instance.NowStage;
+		switch(nowStage)
+		{
+			case 1:
+				LoadSceneDelay("SceneIntro",2f);
+				break;
+
+			case 2:
+				LoadSceneDelay("Scene2",2f);
+				break;
+
+			default:
+				LoadSceneDelay("SceneIntro",2f);
+				break;
+		}
 	}
 
 	public void BackToTitle(){

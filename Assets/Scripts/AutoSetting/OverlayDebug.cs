@@ -29,6 +29,8 @@ public class OverlayDebug : MonoBehaviour
     }
 
     public void QueueString(string src){
+        if(stockString == null)
+            stockString = new Queue<string>();
         stockString.Enqueue(src);
         if(stockString.Count > MaxStringLine){
             stockString.Dequeue();

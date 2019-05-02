@@ -15,6 +15,10 @@ public class AutoVideoImagePlay : MonoBehaviour
 
     public bool StayFirstFrame;
 
+    public bool ResizeTexture;
+
+    public float ResizeRate;
+
     void Awake(){
         targetImage = GetComponent<RawImage>();
         sourceVideo = GetComponent<VideoPlayer>();
@@ -28,19 +32,29 @@ public class AutoVideoImagePlay : MonoBehaviour
         int rW = Mathf.FloorToInt(targetImage.rectTransform.rect.width);
         int rH = Mathf.FloorToInt(targetImage.rectTransform.rect.height);
 
+        if(ResizeTexture){
+            rW = Mathf.FloorToInt(rW * ResizeRate);
+            rH = Mathf.FloorToInt(rH * ResizeRate);
+        }
+
         renderTexture = sourceVideo.targetTexture;
 
         if (renderTexture==null){
-            renderTexture = new RenderTexture(rW, rH, 24);
+            renderTexture = new RenderTexture(rW, rH, 0);
             sourceVideo.targetTexture = renderTexture;
+            //StartCoroutine(SettingTexture());
         }
-            
         targetImage.texture = renderTexture;
 
         if(StayFirstFrame){
             sourceVideo.Play();
             StartCoroutine(FramePause());
         }
+    }
+
+    IEnumerator SettingTexture(){
+        yield return new WaitUntil(()=>{return sourceVideo.texture != null;});
+        targetImage.texture = sourceVideo.texture;
     }
 
     IEnumerator FramePause(){

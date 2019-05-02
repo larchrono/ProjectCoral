@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class Event_AreaMovie0 : MonoBehaviour
@@ -18,7 +19,6 @@ public class Event_AreaMovie0 : MonoBehaviour
     {
         introVideo.loopPointReached += IntroEndReached;
         SceneInteractive.main.frontVideo = introVideo;
-        
     }
 
     void IntroEndReached(VideoPlayer vp)

@@ -26,6 +26,20 @@ public class StaticUtility : MonoBehaviour
 		ScrollImageOverlay.main.gameObject.SetActive (true);
 	}
 
+	public void ShowScrollImageOverlayFree(ImageOverlayClass src){
+		ScrollImageOverlay.main.SetImageFreeSlide (src);
+		ScrollImageOverlay.main.gameObject.SetActive (true);
+	}
+
+	public void ShowBookOverlay(){
+		OverlayBook.main.gameObject.SetActive(true);
+	}
+
+	public void BookOverlayAddPaper(AreaPaperItemSetting paperObj){
+		OverlayBook.main.AddPaper(paperObj.paperID);
+		OverlayBook.main.gameObject.SetActive(true);
+	}
+
 	public void SetBGM(bool src){
 		if(CrossSceneBGM.instance == null)
 			return;
@@ -39,6 +53,26 @@ public class StaticUtility : MonoBehaviour
 
 	public void SetTimeScale(float src){
 		Time.timeScale = src;
+	}
+
+	public void BGMSwitchToMovie(){
+		if(CrossSceneBGM.instance != null)
+			CrossSceneBGM.instance.FadeToMovieBGM();
+	}
+
+	public void BGMSwitchToMain(){
+		if(CrossSceneBGM.instance != null)
+			CrossSceneBGM.instance.FadeToMainBGM();
+	}
+
+	public void PauseBGM(){
+		if(CrossSceneBGM.instance != null)
+			CrossSceneBGM.instance.PauseBGM();
+	}
+
+	public void ResumeBGM(){
+		if(CrossSceneBGM.instance != null)
+			CrossSceneBGM.instance.ResumeBGM();
 	}
 
 	public void FadeAndAction(FadeAndActionContent content){
@@ -59,5 +93,18 @@ public class StaticUtility : MonoBehaviour
 		runAction();
 		BlackMask.MaskHide(duration);
 		
+	}
+
+	public void SaveGameRecordIn2(){
+		GlobalVariables.instance.SetNowStage(2);
+	}
+
+	public void ClearGameRecord(){
+		GlobalVariables.instance.SetNowStage(1);
+		GlobalVariables.instance.SetPageItemStat(0,0);
+		GlobalVariables.instance.SetPageItemStat(1,0);
+		GlobalVariables.instance.SetPageItemStat(2,0);
+		GlobalVariables.instance.SetPageItemStat(3,0);
+		GlobalVariables.instance.SetPageItemStat(4,0);
 	}
 }

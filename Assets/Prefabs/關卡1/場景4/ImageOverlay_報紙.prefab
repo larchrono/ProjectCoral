@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1228, y: 1228}
+  m_SizeDelta: {x: 1227, y: 874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222642487776613426
 CanvasRenderer:
@@ -101,4 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScaleRate: 0.05
-  maxScaleSize: {x: 10, y: 10, z: 10}
+  maxScaleSize: {x: 5, y: 5, z: 5}

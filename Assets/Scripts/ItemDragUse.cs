@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler , IPointerDownHandler , IPointerUpHandler
+public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     const int DraggingItemWidth = 200;
     const int DraggingItemHeight = 200;
@@ -13,6 +13,8 @@ public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     const float RateTouchScale = 1.3f;
     const float RateMoveScale = 1.5f;
+
+    public static bool isDragging { get; set; }
 
     private RectTransform _canvas;
     private Image _image;
@@ -28,10 +30,12 @@ public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         _canvas = FindInParents<Canvas>(gameObject).GetComponent<RectTransform>();
         _image = GetComponent<Image>();
-        Invoke("LateStart",0.1f);
+        isDragging = false;
+        Invoke("LateStart", 0.1f);
     }
 
-    void LateStart(){
+    void LateStart()
+    {
         originSize = GetComponent<RectTransform>().sizeDelta;
     }
 
@@ -55,8 +59,9 @@ public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         _image.enabled = false;
     }
 
-    public void OnPointerUp(PointerEventData eventData){
-        if(_beginDrag == true)
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (_beginDrag == true)
             return;
 
         _image.enabled = true;
@@ -74,6 +79,7 @@ public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         image.rectTransform.sizeDelta = originSize * RateMoveScale;
 
         SetDraggedPosition(eventData);
+        isDragging = true;
 
         //It will Focus Bag Item, important !
         Button thisButton = GetComponent<Button>();
@@ -95,26 +101,31 @@ public class ItemDragUse : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(effectiveUse){
+        if (effectiveUse)
+        {
             RemoveTempIcon();
         }
-        else {
-            m_DraggingIcon.transform.DOMove(transform.position,0.5f).OnComplete(RemoveTempIcon);
-            m_DraggingIcon.GetComponent<RectTransform>().DOSizeDelta(originSize,0.5f);
+        else
+        {
+            m_DraggingIcon.transform.DOMove(transform.position, 0.5f).OnComplete(RemoveTempIcon);
+            m_DraggingIcon.GetComponent<RectTransform>().DOSizeDelta(originSize, 0.5f);
         }
         effectiveUse = false;
+        isDragging = false;
     }
 
-    void RemoveTempIcon(){
+    void RemoveTempIcon()
+    {
         _beginDrag = false;
 
-        if(_image != null)
+        if (_image != null)
             _image.enabled = true;
         if (m_DraggingIcon != null)
             Destroy(m_DraggingIcon);
     }
 
-    public void EffectiveUse(){
+    public void EffectiveUse()
+    {
         Debug.Log("Effective Use");
         effectiveUse = true;
     }
