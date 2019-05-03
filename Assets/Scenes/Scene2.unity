@@ -12745,7 +12745,7 @@ VideoPlayer:
   m_PlayOnAwake: 0
   m_SkipOnDrop: 0
   m_Looping: 0
-  m_WaitForFirstFrame: 0
+  m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!114 &914908164
 MonoBehaviour:
@@ -19278,7 +19278,7 @@ VideoPlayer:
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
-  m_WaitForFirstFrame: 0
+  m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!114 &1009227776
 MonoBehaviour:
@@ -21928,7 +21928,7 @@ PrefabInstance:
     - target: {fileID: 114859327416262442, guid: b5070e82575cb354d86b8b330cb2af74,
         type: 3}
       propertyPath: isDebugArea
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5070e82575cb354d86b8b330cb2af74, type: 3}
@@ -24439,7 +24439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd01a764527a3d344ba70221f747b3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontAutoRelease: 0
+  dontAutoRelease: 1
   StayFirstFrame: 0
   ResizeTexture: 0
   ResizeRate: 0
@@ -34037,7 +34037,7 @@ VideoPlayer:
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
-  m_WaitForFirstFrame: 0
+  m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!114 &2076735955
 MonoBehaviour:

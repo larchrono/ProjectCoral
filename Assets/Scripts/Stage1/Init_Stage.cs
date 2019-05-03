@@ -28,6 +28,11 @@ public class Init_Stage : MonoBehaviour
     {
         SettingSoundOption();
 
+        StartCoroutine(DoWillRunAction());
+    }
+
+    IEnumerator DoWillRunAction(){
+        yield return null;
         willRunAction.Invoke();
     }
 

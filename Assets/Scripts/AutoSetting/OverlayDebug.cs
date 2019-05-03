@@ -35,6 +35,8 @@ public class OverlayDebug : MonoBehaviour
         if(stockString.Count > MaxStringLine){
             stockString.Dequeue();
         }
+        if(Text_Show == null)
+            return;
         Text_Show.text = "";
         foreach (var item in stockString)
         {

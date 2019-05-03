@@ -27,7 +27,7 @@ public class AutoVideoImagePlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetImage.enabled = true;
+        targetImage.color = new Color(1,1,1,0);
 
         int rW = Mathf.FloorToInt(targetImage.rectTransform.rect.width);
         int rH = Mathf.FloorToInt(targetImage.rectTransform.rect.height);
@@ -38,7 +38,6 @@ public class AutoVideoImagePlay : MonoBehaviour
         }
 
         renderTexture = sourceVideo.targetTexture;
-
         if (renderTexture==null){
             renderTexture = new RenderTexture(rW, rH, 0);
             sourceVideo.targetTexture = renderTexture;
@@ -46,20 +45,33 @@ public class AutoVideoImagePlay : MonoBehaviour
         }
         targetImage.texture = renderTexture;
 
+        StartCoroutine(SetupRawImageWhenPlay());
+
         if(StayFirstFrame){
             sourceVideo.Play();
-            StartCoroutine(FramePause());
+            StartCoroutine(FramePauseInFirstFrame());
         }
+    }
+
+    IEnumerator SetupRawImageWhenPlay(){
+        yield return new WaitUntil(()=>{return sourceVideo.isPlaying;});
+        yield return null;          //When start Playing , First Frame is always Black in Android , so need to skip
+        targetImage.enabled = true;
+        targetImage.color = new Color(1,1,1,1);
+        SceneInteractive.main.DebugMsg(gameObject.name + " set finished in " + Time.time);
+    }
+
+    IEnumerator FramePauseInFirstFrame(){
+        yield return new WaitUntil(()=>{return sourceVideo.isPlaying;});
+        yield return null;          //When start Playing , First Frame is always Black in Android , so need to skip
+        targetImage.enabled = true;
+        targetImage.color = new Color(1,1,1,1);
+        sourceVideo.Pause();
     }
 
     IEnumerator SettingTexture(){
         yield return new WaitUntil(()=>{return sourceVideo.texture != null;});
         targetImage.texture = sourceVideo.texture;
-    }
-
-    IEnumerator FramePause(){
-        yield return null;
-        sourceVideo.Pause();
     }
 
     void OnDisable() {
